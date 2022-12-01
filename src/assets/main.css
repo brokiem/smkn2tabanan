@@ -1,0 +1,27 @@
+@import './base.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    .body {
+        @apply scroll-smooth hover:scroll-auto;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #b2b2b2;
+    border-radius: 0.5rem;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #919191;
+    border-radius: 0.5rem;
+}
