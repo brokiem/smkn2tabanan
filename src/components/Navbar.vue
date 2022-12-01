@@ -83,14 +83,15 @@
 export default {
   name: "Navbar",
   mounted() {
-    window.onscroll = () => {
+    const navbarEl = document.getElementById('navbar')
+
+    window.addEventListener('scroll', () => {
       if (["xl", "lg", "md"].includes(this.breakpoint())) {
         const isOnTop = document.body.scrollTop + document.documentElement.scrollTop <= 120;
-        const navbarEl = document.getElementById('navbar')
         navbarEl.style.backgroundColor = isOnTop ? 'transparent' : 'white';
         navbarEl.style.backdropFilter = isOnTop ? 'blur(4px)' : '';
       }
-    }
+    })
   },
   methods: {
     breakpoint: () => {

@@ -10,6 +10,8 @@
   <Article/>
   <!-- Footer -->
   <Footer/>
+  <!-- Back to top button -->
+  <BackToTopButton/>
 </template>
 
 <script>
