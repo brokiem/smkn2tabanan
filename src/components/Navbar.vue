@@ -97,8 +97,10 @@ export default {
 <style scoped>
 .gradient-navbar {
   background: rgb(29, 78, 216);
-  background: -moz-linear-gradient(166deg, rgba(29, 78, 216, 1) 27%, rgba(69, 208, 252, 1) 100%);
-  background: -webkit-linear-gradient(166deg, rgba(29, 78, 216, 1) 27%, rgba(69, 208, 252, 1) 100%);
-  background: linear-gradient(166deg, rgba(29, 78, 216, 1) 27%, rgba(69, 208, 252, 1) 100%);
+  background: -moz-linear-gradient(166deg, rgba(29, 78, 216, 1) 27%, rgb(69, 197, 252) 100%);
+  background: -webkit-linear-gradient(166deg, rgba(29, 78, 216, 1) 27%, rgb(69, 182, 252) 100%);
+  background: linear-gradient(166deg, rgba(29, 78, 216, 1) 27%, rgb(69, 182, 252) 100%);
+  background-size: 180% 180%;
+  animation: gradient 5s ease infinite;
 }
 </style>
