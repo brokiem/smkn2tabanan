@@ -4,7 +4,7 @@
       <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
         <!-- Section title -->
         <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
-          <h2 class="mb-4 text-3xl tracking-tight font-medium text-gray-900 dark:text-white">Kompetensi <span class="text-3xl tracking-tight font-medium gradient-text">Keahlian</span></h2>
+          <h2 class="mb-4 text-3xl tracking-tight font-medium text-gray-900 dark:text-white">Kompetensi Keahlian</h2>
           <p class="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">SMKN 2 Tabanan memiliki 4 Kompetensi Keahlian yang tersedia, antara lain</p>
         </div>
 
