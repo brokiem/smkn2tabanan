@@ -21,7 +21,7 @@
 
       <!-- Card article button -->
       <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-normal hover:underline rounded-md text-sm px-4 py-1.5 text-center mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:ring-blue-800 transition duration-200">
-        SELENGKAPNYA
+        BACA SELENGKAPNYA
         <svg class="w-5 h-5 inline top-[-1px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke-width="1.5" stroke="currentColor">
           <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
         </svg>
