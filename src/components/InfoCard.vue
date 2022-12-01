@@ -19,7 +19,7 @@ export default {
 </script>
 
 <template>
-  <div class="p-6 pt-10 pb-10 w-[95%] md:max-w-lg min-h-[250px] md:min-h-[230px] mx-auto bg-white rounded-md shadow-sm flex items-center space-x-4 absolute right-2 md:right-[8rem] top-[10rem] md:top-[15rem]">
+  <div class="p-6 pt-10 pb-10 w-[95%] md:max-w-lg min-h-[250px] md:min-h-[230px] mx-auto bg-white rounded-md shadow-sm flex items-center space-x-4 absolute right-2 md:right-[8rem] top-[18rem] md:top-[23rem]">
     <div>
       <h2 class="text-3xl font-normal text-black pb-5">SMK Negeri 2 Tabanan</h2>
       <p class="text-slate-500">Terwujudnya Peserta Didik Yang Terdidik, Cerdas, Terampil, Mandiri dan Berdaya Saing Global</p>

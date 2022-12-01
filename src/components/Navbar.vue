@@ -1,5 +1,14 @@
 <template>
-  <nav id="navbar" class="px-4 sm:px-4 py-1 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 md:backdrop-blur-sm bg-white md:bg-transparent shadow-md transition duration-150">
+  <nav class="px-2 sm:px-4 py-2.5 gradient-navbar">
+    <div class="container flex flex-wrap items-center justify-center mx-auto">
+      <img src="/public/images/logo-smk2.png" class="h-[50px] w-[50px]" alt="Logo SMK" />
+    </div>
+    <div class="container flex flex-wrap items-center justify-center mx-auto">
+      <h6 class="text-xl font-bold text-white">SMK NEGERI 2 TABANAN</h6>
+    </div>
+  </nav>
+
+  <nav id="navbar" class="px-4 sm:px-4 py-1 dark:bg-gray-900 fixed w-full z-20 sticky top-0 left-0 bg-white shadow-md transition duration-150">
     <div class="container-lg flex flex-wrap items-center justify-between mx-auto">
       <a class="flex items-center"></a>
 
@@ -81,38 +90,15 @@
 
 <script>
 export default {
-  name: "Navbar",
-  mounted() {
-    const navbarEl = document.getElementById('navbar')
-
-    window.addEventListener('scroll', () => {
-      if (["xl", "lg", "md"].includes(this.breakpoint())) {
-        const isOnTop = document.body.scrollTop + document.documentElement.scrollTop <= 120;
-        navbarEl.style.backgroundColor = isOnTop ? 'transparent' : 'white';
-        navbarEl.style.backdropFilter = isOnTop ? 'blur(4px)' : '';
-      }
-    })
-  },
-  methods: {
-    breakpoint: () => {
-      const breakpoints = {
-        '(min-width: 1200px)': 'xl',
-        '(min-width: 992px) and (max-width: 1199.98px)': 'lg',
-        '(min-width: 768px) and (max-width: 991.98px)': 'md',
-        '(min-width: 576px) and (max-width: 767.98px)': 'sm',
-        '(max-width: 575.98px)': 'xs',
-      }
-      for (let media in breakpoints) {
-        if (window.matchMedia(media).matches) {
-          return breakpoints[media];
-        }
-      }
-      return null;
-    }
-  }
+  name: "Navbar"
 }
 </script>
 
 <style scoped>
-
+.gradient-navbar {
+  background: rgb(29, 78, 216);
+  background: -moz-linear-gradient(166deg, rgba(29, 78, 216, 1) 27%, rgba(69, 208, 252, 1) 100%);
+  background: -webkit-linear-gradient(166deg, rgba(29, 78, 216, 1) 27%, rgba(69, 208, 252, 1) 100%);
+  background: linear-gradient(166deg, rgba(29, 78, 216, 1) 27%, rgba(69, 208, 252, 1) 100%);
+}
 </style>
