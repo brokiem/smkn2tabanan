@@ -4,4 +4,7 @@ import { RouterView } from 'vue-router';
 
 <template class="overflow-hidden">
   <RouterView />
+
+  <!-- Back to top button -->
+  <BackToTopButton/>
 </template>
