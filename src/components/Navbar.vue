@@ -90,17 +90,28 @@
 
 <script>
 import Dropdown from "flowbite/src/components/dropdown";
+import Collapse from "flowbite/src/components/collapse";
 
 export default {
   name: "Navbar",
   mounted() {
-    // re-init flowbite js listener
+    // init flowbite js listener
+    // dropdown
     document.querySelectorAll('[data-dropdown-toggle]').forEach(triggerEl => {
       const targetEl = document.getElementById(triggerEl.getAttribute('data-dropdown-toggle'))
       const placement = triggerEl.getAttribute('data-dropdown-placement')
 
       new Dropdown(targetEl, triggerEl, {
         placement: placement ? placement : 'bottom'
+      })
+    })
+    // collapse
+    document.querySelectorAll('[data-collapse-toggle]').forEach(triggerEl => {
+      const targetEl = document.getElementById(triggerEl.getAttribute('data-collapse-toggle'))
+      triggerEl.setAttribute('aria-expanded', 'false')
+
+      new Collapse(targetEl, {
+        triggerEl: triggerEl
       })
     })
   }
