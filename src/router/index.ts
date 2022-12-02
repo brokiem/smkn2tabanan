@@ -7,9 +7,9 @@ import ExtracurricularView from "../views/ExtracurricularView.vue";
 
 const routes = [
     {path: "/", name: "main", component: MainView},
-    {path: "/fasilitas", name: "fasilitas-sekolah", component: FasilitasSekolahView},
-    {path: "/sejarah", name: "sejarah-sekolah", component: SejarahSekolahView},
-    {path: "/visi-misi", name: "visi-misi", component: VisiMisiView},
+    {path: "/profil/fasilitas", name: "fasilitas-sekolah", component: FasilitasSekolahView},
+    {path: "/profil/sejarah", name: "sejarah-sekolah", component: SejarahSekolahView},
+    {path: "/profil/visi-misi", name: "visi-misi", component: VisiMisiView},
     {path: "/kesiswaan/ekstrakulikuler", name: "ekstrakulikuler", component: ExtracurricularView}
 ];
 
