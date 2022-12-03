@@ -1,7 +1,7 @@
 <template>
   <nav class="px-2 sm:px-4 py-2.5 gradient-navbar">
     <div class="container flex flex-wrap items-center justify-center mx-auto">
-      <img src="/public/images/logo-smk2.png" class="h-[50px] w-[50px]" alt="Logo SMK" />
+      <img src="/public/images/logo-smk2.png" width="50" height="50" alt="Logo SMK"/>
     </div>
     <div class="container flex flex-wrap items-center justify-center mx-auto">
       <h6 class="text-xl font-bold text-white">SMK NEGERI 2 TABANAN</h6>

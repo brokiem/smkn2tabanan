@@ -1,7 +1,7 @@
 <template>
   <footer>
     <!-- Mega Footer -->
-    <div class="bg-white py-7 px-4" style="background-color: #f6f6f6;">
+    <div class="bg-white py-7 px-4" style="background-color: #f5f5f5;">
       <div class="container mx-auto sm:px-4">
         <div class="md:flex md:flex-wrap md:justify-between">
           <div>
@@ -11,7 +11,7 @@
             <!-- Address -->
             <div class="flex flex-wrap">
               <!-- Map icon -->
-              <div class="text-gray-500 ml-4 mt-4 md:mt-9">
+              <div class="text-gray-700 ml-4 mt-4 md:mt-9">
                 <svg class="w-5 h-5 inline top-[-2px] mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clip-rule="evenodd" />
                 </svg>
@@ -21,7 +21,7 @@
             <!-- Telephone number -->
             <div class="flex flex-wrap">
               <!-- Telephone icon -->
-              <div class="text-gray-500 ml-4 mt-2">
+              <div class="text-gray-700 ml-4 mt-2">
                 <svg class="w-5 h-5 inline top-[-2px] mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z" clip-rule="evenodd" />
                 </svg>
@@ -31,7 +31,7 @@
             <!-- Email -->
             <div class="flex flex-wrap">
               <!-- Email icon -->
-              <a href="mailto:smkn2tabanan@ymail.com" class="text-gray-500 ml-4 mt-2">
+              <a href="mailto:smkn2tabanan@ymail.com" class="text-gray-700 ml-4 mt-2">
                 <svg class="w-5 h-5 inline top-[-2px] mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                   <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z" />
                   <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z" />
@@ -42,7 +42,15 @@
           </div>
           <!-- Google Maps iframe -->
           <div class="pl-4 mt-9 md:mt-4">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.859999046224!2d115.16562741433472!3d-8.512971288557424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd23b6a8b9b5e83%3A0x26d48e4fa61a6bd!2sSMK%20Negeri%202%20Tabanan!5e0!3m2!1sid!2sid!4v1622018812277!5m2!1sid!2sid" width="100%" height="185" style="border:1px;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.859999046224!2d115.16562741433472!3d-8.512971288557424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd23b6a8b9b5e83%3A0x26d48e4fa61a6bd!2sSMK%20Negeri%202%20Tabanan!5e0!3m2!1sid!2sid!4v1622018812277!5m2!1sid!2sid"
+                title="Google Maps"
+                width="100%"
+                height="185"
+                style="border:1px;"
+                allowfullscreen=""
+                loading="lazy">
+            </iframe>
           </div>
         </div>
       </div>
@@ -50,7 +58,7 @@
     <!-- Devider -->
     <hr class="border-gray-200 sm:mx-auto dark:border-gray-700"/>
     <!-- Small Footer -->
-    <div class="p-4 bg-white sm:p-6 dark:bg-gray-900 bottom-0 w-full" style="background-color: #f6f6f6;">
+    <div class="p-4 bg-white sm:p-6 dark:bg-gray-900 bottom-0 w-full" style="background-color: #f5f5f5;">
       <div class="container mx-auto">
         <div class="sm:flex sm:items-center sm:justify-between px-10 mx-auto md:max-w-screen-xl">
           <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© {{new Date().getFullYear()}} - TIK SMK DUTA | All Rights Reserved.</span>
