@@ -10,7 +10,7 @@
   <div class="container mx-auto px-4 md:max-w-screen-lg pt-6">
     <div class="flex flex-col md:flex-row items-center block w-full bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
       <!-- Card image -->
-      <img class="object-cover w-full rounded-t-lg h-72 md:w-[30%] md:rounded-none md:rounded-l-lg" src="/public/images/coding-rpl.webp" alt="">
+      <img class="object-cover w-full rounded-t-lg h-72 md:w-[30%] md:rounded-none md:rounded-l-lg" src="/public/images/coding-rpl.jpg" alt="">
       <div class="flex flex-col justify-between leading-normal p-6">
         <!-- Title RPL -->
         <h5 class="mb-2 text-2xl font-medium text-gray-700 dark:text-white">
@@ -29,7 +29,7 @@
 
     <div class="flex flex-col md:flex-row items-center block w-full bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
       <!-- Card image -->
-      <img class="object-cover w-full rounded-t-lg h-72 md:w-[30%] md:rounded-none md:rounded-l-lg" src="/public/images/camera-mm.webp" alt="">
+      <img class="object-cover w-full rounded-t-lg h-72 md:w-[30%] md:rounded-none md:rounded-l-lg" src="/public/images/camera-mm.jpg" alt="">
       <div class="flex flex-col justify-between leading-normal p-6">
         <!-- Title Multimedia -->
         <h5 class="mb-2 text-2xl font-medium text-gray-700 dark:text-white">
@@ -48,7 +48,7 @@
 
     <div class="flex flex-col md:flex-row items-center block w-full bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
       <!-- Card image -->
-      <img class="object-cover w-full rounded-t-lg h-72 md:w-[30%] md:rounded-none md:rounded-l-lg" src="/public/images/food-boga.webp" alt="">
+      <img class="object-cover w-full rounded-t-lg h-72 md:w-[30%] md:rounded-none md:rounded-l-lg" src="/public/images/food-boga.jpg" alt="">
       <div class="flex flex-col justify-between leading-normal p-6">
         <!-- Title Multimedia -->
         <h5 class="mb-2 text-2xl font-medium text-gray-700 dark:text-white">
@@ -67,7 +67,7 @@
 
     <div class="flex flex-col md:flex-row items-center block w-full bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
       <!-- Card image -->
-      <img class="object-cover w-full rounded-t-lg h-72 md:w-[30%] md:rounded-none md:rounded-l-lg" src="/public/images/calc-akl.webp" alt="">
+      <img class="object-cover w-full rounded-t-lg h-72 md:w-[30%] md:rounded-none md:rounded-l-lg" src="/public/images/calc-akl.jpg" alt="">
       <div class="flex flex-col justify-between leading-normal p-6">
         <!-- Title Multimedia -->
         <h5 class="mb-2 text-2xl font-medium text-gray-700 dark:text-white">
