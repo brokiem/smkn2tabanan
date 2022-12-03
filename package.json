@@ -12,10 +12,10 @@
     "deploy": "node scripts/gh-pages-deploy.js"
   },
   "dependencies": {
+    "execa": "5.1.1",
     "flowbite": "^1.5.4",
     "vue": "^3.2.45",
-    "vue-router": "^4.1.6",
-    "execa": "5.1.1"
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",
