@@ -10,7 +10,7 @@
 
   <nav id="navbar" class="px-4 sm:px-4 dark:bg-gray-900 fixed w-full z-20 sticky top-0 left-0 bg-white shadow-md transition duration-150">
     <div class="container-lg flex flex-wrap items-center justify-between mx-auto">
-      <a class="flex items-center"></a>
+      <div class="flex items-center"></div>
 
       <!-- Navbar button for small screen devices -->
       <div class="flex md:order-2">
