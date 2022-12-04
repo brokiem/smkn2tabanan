@@ -7,6 +7,10 @@ NProgress.configure({
     template: '<div class="bar" role="bar">'
 });
 
+NProgress.trickle = function() {
+    return NProgress.inc(0.1);
+};
+
 function lazyLoad(view: string) {
     return () => import(`@/views/${view}.vue`);
 }
