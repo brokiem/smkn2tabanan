@@ -8,11 +8,14 @@
         </div>
 
         <div class="space-y-3 lg:grid lg:grid-cols-3 sm:gap-4 lg:gap-3 lg:space-y-0">
-          <ArticleCard title="SEKILAS UJIAN AKHIR SEMESTER 2022" description="SMK NEGERI 2 TABANAN melaksanakan ujian semester pada akhir semester setelah menyelesaikan..."></ArticleCard>
-          <ArticleCard title="SEKILAS UJIAN AKHIR SEMESTER 2022" description="SMK NEGERI 2 TABANAN melaksanakan ujian semester pada akhir semester setelah menyelesaikan..."></ArticleCard>
-          <ArticleCard title="SEKILAS UJIAN AKHIR SEMESTER 2022" description="SMK NEGERI 2 TABANAN melaksanakan ujian semester pada akhir semester setelah menyelesaikan..."></ArticleCard>
-          <ArticleCard title="SEKILAS UJIAN AKHIR SEMESTER 2022" description="SMK NEGERI 2 TABANAN melaksanakan ujian semester pada akhir semester setelah menyelesaikan..."></ArticleCard>
-          <ArticleCard title="SEKILAS UJIAN AKHIR SEMESTER 2022" description="SMK NEGERI 2 TABANAN melaksanakan ujian semester pada akhir semester setelah menyelesaikan..."></ArticleCard>
+          <!-- Iterate article card with loops (data from rest api) -->
+          <ArticleCard
+              v-for="{ image_header_url, title, contents, posted_by, created_at, updated_at } in articles"
+
+              :header-img-url="image_header_url"
+              :title="title"
+              :description="contents">
+          </ArticleCard>
         </div>
 
         <div class="pt-5"></div>
@@ -28,11 +31,28 @@
 
 <script>
 import ArticleCard from "@/components/ArticleCard.vue";
+import {ref} from "vue";
 
 export default {
   name: "News",
   components: {
     ArticleCard
+  },
+  setup() {
+    // Articles reference
+    let articles = ref([]);
+
+    // Get all articles and set to reference
+    fetch("http://localhost:3000/v1/berita/list", {method: 'GET', redirect: 'follow'})
+        .then(response => response.json())
+        .then(result => {
+          if (result.success) {
+            articles.value = result.message;
+          }
+        })
+        .catch(error => console.log('error', error));
+
+    return {articles};
   }
 }
 </script>
