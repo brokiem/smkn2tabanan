@@ -47,10 +47,10 @@
                     <router-link to="/profil/fasilitas" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Fasilitas Sekolah</router-link>
                   </li>
                   <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logo Sekolah</a>
+                    <router-link to="/profil/logo" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logo Sekolah</router-link>
                   </li>
                   <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Struktur Organisasi</a>
+                    <router-link to="/profil/struktur-organisasi" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Struktur Organisasi</router-link>
                   </li>
                 </ul>
               </div>
@@ -76,7 +76,7 @@
                     <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Tata Tertib</a>
                   </li>
                   <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Esktra Kulikuler</a>
+                    <router-link to="/kesiswaan/ekstrakulikuler" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ekstra Kulikuler</router-link>
                   </li>
                 </ul>
               </div>
