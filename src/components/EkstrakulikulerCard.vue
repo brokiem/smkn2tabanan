@@ -9,7 +9,7 @@
 
     <!-- Card ekstra button -->
     <div class="flex flex-wrap mt-auto">
-      <button v-bind:data-modal-toggle="title.replaceAll(' ', '-').toLowerCase()" type="button" class="mt-4 w-full transition duration-200 shadow-sm text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-md text-sm py-1.5 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+      <button v-bind:data-modal-toggle="title.replaceAll(' ', '-').toLowerCase()" type="button" class="mt-4 w-full transition duration-200 shadow-sm text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 font-medium rounded-md text-sm py-1.5 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
         GURU PEMBIMBING
       </button>
     </div>
@@ -36,7 +36,7 @@
         </div>
         <!-- Modal footer -->
         <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-          <button v-bind:data-modal-toggle="title.replaceAll(' ', '-').toLowerCase()" type="button" class="w-full transition duration-200 shadow-sm text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-md text-sm py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+          <button v-bind:data-modal-toggle="title.replaceAll(' ', '-').toLowerCase()" type="button" class="w-full transition duration-200 shadow-sm text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 font-medium rounded-md text-sm py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
             Tutup
           </button>
         </div>
