@@ -5,7 +5,7 @@
     <h3 class="mb-4 text-xl font-normal tracking-tight">{{title}}</h3>
 
     <!-- Card ekstra description -->
-    <p class="font-light text-gray-500 text-md text-">{{description}}</p>
+    <p class="text-base font-normal text-gray-500 text-md text-">{{description}}</p>
 
     <!-- Card ekstra button -->
     <div class="flex flex-wrap mt-auto">
