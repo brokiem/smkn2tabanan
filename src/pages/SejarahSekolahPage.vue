@@ -3,9 +3,7 @@
   <Navbar/>
 
   <!-- Page title -->
-  <h2 class="mb-4 text-3xl text-center text-gray-900 dark:text-white pt-16 pb-16" style="background-color: #F8F9FC;">
-    Sejarah Sekolah
-  </h2>
+  <Header title="Sejarah Sekolah"></Header>
 
   <div class="container mx-auto px-4 md:max-w-screen-lg pt-6">
     <div class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
@@ -27,8 +25,10 @@
 </template>
 
 <script>
+import Header from "@/components/Header.vue";
 export default {
-  name: "SejarahSekolahPage"
+  name: "SejarahSekolahPage",
+  components: {Header}
 }
 </script>
 

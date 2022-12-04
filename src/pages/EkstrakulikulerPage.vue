@@ -2,9 +2,7 @@
   <Navbar/>
 
   <!-- Page title -->
-  <h2 class="mb-4 text-3xl text-center text-gray-900 dark:text-white pt-16 pb-16" style="background-color: #F8F9FC;">
-    Ekstrakulikuler
-  </h2>
+  <Header title="Ekstrakulikuler"></Header>
 
   <div class="container mx-auto pt-6">
     <div class="px-4 mx-auto md:max-w-screen-xl lg:px-6">
@@ -44,10 +42,12 @@
 
 <script>
 import EkstrakulikulerCard from "@/components/EkstrakulikulerCard.vue";
+import Header from "@/components/Header.vue";
 
 export default {
   name: "EkstrakulikulerPage",
   components: {
+    Header,
     EkstrakulikulerCard
   }
 }

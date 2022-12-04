@@ -3,9 +3,7 @@
   <Navbar/>
 
   <!-- Page title -->
-  <h2 class="text-3xl text-center text-gray-900 dark:text-white pt-16 pb-16" style="background-color: #F8F9FC;">
-    Struktur Organisasi
-  </h2>
+  <Header title="Struktur Organisasi"></Header>
 
   <div class="container mx-auto px-4 md:max-w-screen-lg">
     <div class="flex justify-center">
@@ -20,8 +18,10 @@
 </template>
 
 <script>
+import Header from "@/components/Header.vue";
 export default {
-  name: "StrukturOrganisasiPage"
+  name: "StrukturOrganisasiPage",
+  components: {Header}
 }
 </script>
 

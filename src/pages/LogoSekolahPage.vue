@@ -3,9 +3,7 @@
   <Navbar/>
 
   <!-- Page title -->
-  <h2 class="mb-4 text-3xl text-center text-gray-900 dark:text-white pt-16 pb-16" style="background-color: #F8F9FC;">
-    Logo Sekolah
-  </h2>
+  <Header title="Logo Sekolah"></Header>
 
   <!-- Container + contents -->
   <div class="container mx-auto px-4 md:max-w-screen-lg pt-6">
@@ -16,7 +14,7 @@
 
     <div class="py-2"></div>
 
-    <!-- Page card title -->
+    <!-- Page card -->
     <div class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
       <!-- Bentuk Dasar -->
       <h5 class="mb-2 text-2xl font-base tracking-tight text-gray-700 dark:text-white">
@@ -72,8 +70,10 @@
 </template>
 
 <script>
+import Header from "@/components/Header.vue";
 export default {
-  name: "LogoSekolahPage"
+  name: "LogoSekolahPage",
+  components: {Header}
 }
 </script>
 
