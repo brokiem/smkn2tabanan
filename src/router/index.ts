@@ -4,11 +4,12 @@ import NProgress from 'nprogress';
 // Route progress bar
 NProgress.configure({
     showSpinner: false,
+    trickleSpeed: 100,
     template: '<div class="bar" role="bar">'
 });
 
 NProgress.trickle = function() {
-    return NProgress.inc(0.1);
+    return NProgress.inc(0.2);
 };
 
 function lazyLoad(view: string) {
