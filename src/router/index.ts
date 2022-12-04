@@ -82,7 +82,16 @@ const routes = [
         path: "/kesiswaan/ekstrakulikuler",
         name: "ekstrakulikuler",
         component: lazyLoad('EkstrakulikulerView')
-    }
+    },
+    {
+        path: "/kesiswaan/tatatertib",
+        name: "tata-tertib",
+        component: lazyLoad('TataTertibView')
+    },
+    {
+        path: "/kesiswaan/tata-tertib",
+        redirect: '/kesiswaan/tatatertib'
+    },
 ];
 
 const router = createRouter({
