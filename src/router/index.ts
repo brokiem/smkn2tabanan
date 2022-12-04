@@ -17,7 +17,7 @@ const routes = [
     {path: "/profil/struktur-organisasi", name: "struktur-organisasi", component: StrukturOrganisasiView},
     {path: "/kompetensi-keahlian", name: "kompetensi-keahlian", component: KompetensiKeahlianView},
     {path: "/jurusan", redirect: '/kompetensi-keahlian'},
-    {path: "/kesiswaan/ekstrakulikuler", name: "ekstrakulikuler", component: ExtracurricularView}
+    {path: "/kesiswaan/ekstrakulikuler", name: "ekstrakulikuler", component: EkstrakulikulerView}
 ];
 
 const router = createRouter({
