@@ -1,7 +1,14 @@
 import {createRouter, createWebHashHistory} from "vue-router";
+import NProgress from 'nprogress';
 
-function lazyLoad(view){
-    return() => import(`@/views/${view}.vue`)
+// Route progress bar
+NProgress.configure({
+    showSpinner: false,
+    template: '<div class="bar" role="bar">'
+});
+
+function lazyLoad(view: string) {
+    return () => import(`@/views/${view}.vue`);
 }
 
 const routes = [
@@ -23,6 +30,16 @@ const router = createRouter({
     },
     history: createWebHashHistory(import.meta.env.BASE_URL),
     routes: routes
+});
+
+router.beforeEach(() => {
+    // Start the route progress bar.
+    NProgress.start()
+});
+
+router.afterEach(() => {
+    // Complete the animation of the route progress bar.
+    NProgress.done()
 });
 
 export default router;

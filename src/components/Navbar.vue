@@ -1,5 +1,5 @@
 <template>
-  <nav class="px-2 sm:px-4 py-2.5 gradient-navbar">
+  <nav class="px-2 sm:px-4 pb-2.5 pt-3 gradient-navbar">
     <div class="container flex flex-wrap items-center justify-center mx-auto">
       <img src="/public/images/logo-smk2.png" width="50" height="50" alt="Logo SMK"/>
     </div>
