@@ -4,7 +4,7 @@
     <Navbar/>
 
     <!-- Page title -->
-    <Header title="Visi & Misi"></Header>
+    <Header title="Visi &amp; Misi"></Header>
 
     <div class="container mx-auto px-4 md:max-w-screen-lg pt-6">
       <div class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">

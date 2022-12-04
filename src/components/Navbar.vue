@@ -41,7 +41,7 @@
                     <router-link to="/profil/sejarah" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sejarah Sekolah</router-link>
                   </li>
                   <li>
-                    <router-link to="/profil/visi-misi" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Visi & Misi</router-link>
+                    <router-link to="/profil/visi-misi" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Visi &amp; Misi</router-link>
                   </li>
                   <li>
                     <router-link to="/profil/fasilitas" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Fasilitas Sekolah</router-link>
