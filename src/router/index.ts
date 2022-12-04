@@ -118,6 +118,9 @@ router.beforeEach((to, from, next) => {
                 '/smkn2tabanan/images/calc-akl.jpg'
             ])
             break;
+        case "tata-tertib":
+            promises = preloadImages(['/smkn2tabanan/images/depan-smk.jpg'])
+            break;
     }
 
     Promise.all(promises).then(function () {

@@ -26,7 +26,7 @@ export default {
 
       <div class="my-6"></div>
 
-      <a href="#">
+      <a href="http://www.smkn2tabanan.sch.id/ppdb">
         <button @click="removePing" type="button" class="transition duration-200 text-white bg-blue-700 hover:bg-blue-800 focus:ring-2 focus:ring-blue-300 font-normal rounded-md text-sm px-4 py-2 mr-4 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
           INFO PPDB
           <span id="ping-bulet" class="absolute inline-flex h-3 w-3 inset-y-[-4px] inset-x-24 rounded-full bg-sky-400"></span>
