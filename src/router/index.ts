@@ -4,7 +4,6 @@ import NProgress from 'nprogress';
 // Route progress bar
 NProgress.configure({
     showSpinner: false,
-    trickleSpeed: 100,
     template: '<div class="bar" role="bar">'
 });
 
