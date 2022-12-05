@@ -111,24 +111,24 @@ router.beforeEach((to, from, next) => {
 
     switch (to.name) {
         case "main":
-            promises = preloadImages(['/smkn2tabanan/images/atas-blur-min.webp'])
+            promises = preloadImages([new URL('@images/atas-blur-min.webp', import.meta.url).href])
             break;
         case "logo":
-            promises = preloadImages(['/smkn2tabanan/images/logo-smk2.png'])
+            promises = preloadImages([new URL('@images/logo-smk2.png', import.meta.url).href])
             break;
         case "struktur-organisasi":
-            promises = preloadImages(['/smkn2tabanan/images/struktur-organisasi.png'])
+            promises = preloadImages([new URL('@images/struktur-organisasi.png', import.meta.url).href])
             break;
         case "kompetensi-keahlian":
             promises = preloadImages([
-                '/smkn2tabanan/images/coding-rpl.jpg',
-                '/smkn2tabanan/images/camera-mm.jpg',
-                '/smkn2tabanan/images/food-boga.jpg',
-                '/smkn2tabanan/images/calc-akl.jpg'
+                new URL('@images/coding-rpl.jpg', import.meta.url).href,
+                new URL('@images/camera-mm.jpg', import.meta.url).href,
+                new URL('@images/food-boga.jpg', import.meta.url).href,
+                new URL('@images/calc-akl.jpg', import.meta.url).href
             ])
             break;
         case "tata-tertib":
-            promises = preloadImages(['/smkn2tabanan/images/depan-smk.jpg'])
+            promises = preloadImages([new URL('@images/depan-smk.jpg', import.meta.url).href])
             break;
     }
 
