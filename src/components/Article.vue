@@ -8,11 +8,18 @@
         </div>
 
         <div class="space-y-3 lg:grid lg:grid-cols-3 sm:gap-4 lg:gap-3 lg:space-y-0">
-          <ArticleCard title="SEKILAS UJIAN AKHIR SEMESTER 2022" description="SMK NEGERI 2 TABANAN melaksanakan ujian semester pada akhir semester setelah menyelesaikan..."></ArticleCard>
-          <ArticleCard title="SEKILAS UJIAN AKHIR SEMESTER 2022" description="SMK NEGERI 2 TABANAN melaksanakan ujian semester pada akhir semester setelah menyelesaikan..."></ArticleCard>
-          <ArticleCard title="SEKILAS UJIAN AKHIR SEMESTER 2022" description="SMK NEGERI 2 TABANAN melaksanakan ujian semester pada akhir semester setelah menyelesaikan..."></ArticleCard>
-          <ArticleCard title="SEKILAS UJIAN AKHIR SEMESTER 2022" description="SMK NEGERI 2 TABANAN melaksanakan ujian semester pada akhir semester setelah menyelesaikan..."></ArticleCard>
-          <ArticleCard title="SEKILAS UJIAN AKHIR SEMESTER 2022" description="SMK NEGERI 2 TABANAN melaksanakan ujian semester pada akhir semester setelah menyelesaikan..."></ArticleCard>
+          <CardSkeleton v-if="isLoading"/>
+          <CardSkeleton v-if="isLoading"/>
+          <CardSkeleton v-if="isLoading"/>
+
+          <!-- Iterate article card with loops (data from rest api) -->
+          <ArticleCard
+              v-for="{ image_header_url, title, contents, posted_by, created_at, updated_at } in articles"
+
+              :header-img-url="image_header_url"
+              :title="title"
+              :description="contents">
+          </ArticleCard>
         </div>
 
         <div class="pt-5"></div>
@@ -28,11 +35,32 @@
 
 <script>
 import ArticleCard from "@/components/ArticleCard.vue";
+import {ref} from "vue";
+import CardSkeleton from "@/components/CardSkeleton.vue";
 
 export default {
   name: "News",
   components: {
+    CardSkeleton,
     ArticleCard
+  },
+  setup() {
+    // Articles reference
+    let articles = ref([]);
+    let isLoading = ref(true);
+
+    // Get all articles and set to reference
+    fetch("http://localhost:3000/v1/berita/all", {method: 'GET', redirect: 'follow'})
+        .then(response => response.json())
+        .then(result => {
+          if (result.success) {
+            isLoading.value = false;
+            articles.value = result.message;
+          }
+        })
+        .catch(error => console.log('error', error));
+
+    return {articles, isLoading};
   }
 }
 </script>

@@ -16,8 +16,8 @@
     <div class="p-5">
       <!-- Card article title -->
       <h3 class="mb-4 text-xl font-normal tracking-tight">{{title}}</h3>
-      <!-- Card article description -->
-      <p class="font-light text-gray-500 text-md text-">{{description}}</p>
+      <!-- Card article description with limit of 135 chars -->
+      <p class="font-light text-gray-500 text-md text-">{{description.length > maxDescriptionLength ? description.substring(0, maxDescriptionLength) + " [...]" : description}}</p>
 
       <!-- Card article button -->
       <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-normal hover:underline rounded-md text-sm px-4 py-1.5 text-center mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:ring-blue-800 transition duration-200">
@@ -34,9 +34,17 @@
 export default {
   name: "ArticleCard",
   props: {
+    headerImgUrl: String,
     title: String,
     description: String,
     date: Number
+  },
+  setup() {
+    const maxDescriptionLength = 135;
+
+    return {
+      maxDescriptionLength
+    }
   }
 }
 </script>

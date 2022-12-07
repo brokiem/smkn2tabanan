@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "KompetensiKeahlianCard",
+  name: "CardWithLeftImage",
   props: {
     title: {
       type: String,
@@ -32,7 +32,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>
