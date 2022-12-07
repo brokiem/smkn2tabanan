@@ -18,8 +18,9 @@
 
               :header-img-url="image_header_url"
               :title="title"
-              :description="contents">
-          </ArticleCard>
+              :description="contents"
+              :createdEpoch="created_at"
+          ></ArticleCard>
         </div>
 
         <div class="pt-5"></div>
