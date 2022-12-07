@@ -43,7 +43,7 @@ export default {
     let articles = ref([]);
 
     // Get all articles and set to reference
-    fetch("http://localhost:3000/v1/berita/list", {method: 'GET', redirect: 'follow'})
+    fetch("http://localhost:3000/v1/berita/all", {method: 'GET', redirect: 'follow'})
         .then(response => response.json())
         .then(result => {
           if (result.success) {
