@@ -16,9 +16,11 @@
         <p class="mt-1 text-base font-normal text-gray-700 dark:text-gray-400">
           Terwujudnya Peserta Didik Yang Terdidik, Cerdas, Terampil, Mandiri dan Berdaya Saing Global
         </p>
+      </div>
 
+      <div class="mt-4 block w-full p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
         <!-- Misi -->
-        <h5 class="mb-2 mt-6 text-2xl font-base tracking-tight text-black dark:text-white">
+        <h5 class="mb-2 text-2xl font-base tracking-tight text-black dark:text-white">
           Misi
         </h5>
         <!-- Misi contents -->
