@@ -9,7 +9,7 @@
     <!-- Card contents skeleton -->
     <div class="p-5 animate-pulse">
       <!-- Card title skeleton -->
-      <div class="mt-1 mb-5 h-5 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[400px]"></div>
+      <div class="mt-1 mb-5 h-5 bg-gray-200 rounded-lg dark:bg-gray-700 max-w-[400px]"></div>
       <!-- Card description skeleton -->
       <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-full lg:max-w-[380px] mb-2.5"></div>
       <div class="h-2 lg:h-0 bg-gray-200 rounded-full dark:bg-gray-700 max-w-full lg:max-w-[380px] mb-2.5"></div>
