@@ -132,7 +132,9 @@ router.beforeEach((to, from, next) => {
             break;
     }
 
+    // Load images first then go to the next route
     Promise.all(promises).then(function () {
+        // Process route
         next();
     });
 });
