@@ -11,11 +11,11 @@ NProgress.trickle = function() {
     return NProgress.inc(0.2);
 };
 
-function lazyLoad(view: string) {
+function lazyLoad(view: string): Object {
     return () => import(`@/views/${view}.vue`);
 }
 
-function preloadImage(url: string) {
+function preloadImage(url: string): Promise<any> {
     const img = new Image();
     img.src = url;
 
@@ -28,7 +28,7 @@ function preloadImage(url: string) {
     });
 }
 
-function preloadImages(urls: Array<string>) {
+function preloadImages(urls: Array<string>): Promise<any>[] {
     let promises: any[] = [];
 
     urls.forEach(url => {
@@ -107,7 +107,7 @@ router.beforeEach((to, from, next) => {
     // Start the route progress bar.
     NProgress.start()
 
-    let promises = [];
+    let promises: any[] = [];
 
     switch (to.name) {
         case "main":
