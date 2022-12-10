@@ -6,7 +6,6 @@ NProgress.configure({
     showSpinner: false,
     template: '<div class="bar" role="bar">'
 });
-
 NProgress.trickle = function() {
     return NProgress.inc(0.2);
 };

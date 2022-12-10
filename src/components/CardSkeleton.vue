@@ -26,7 +26,3 @@ export default {
   name: "CardSkeleton"
 }
 </script>
-
-<style scoped>
-
-</style>
