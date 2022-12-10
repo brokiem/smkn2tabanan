@@ -92,6 +92,21 @@ const routes = [
         path: "/kesiswaan/tata-tertib",
         redirect: '/kesiswaan/tatatertib'
     },
+    {
+        path: "/berita/:titleId",
+        name: "berita",
+        component: lazyLoad('BeritaView')
+    },
+    {
+        path: "/pengumuman/:titleId",
+        name: "pengumuman",
+        component: lazyLoad('PengumumanView')
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'NotFound',
+        component: lazyLoad('PageNotFoundView')
+    },
 ];
 
 const router = createRouter({
