@@ -63,7 +63,7 @@ export default {
     const id = titleId[titleId.length - 1];
 
     // Get article and check if it exists
-    fetch(`http://localhost:3000/v1/berita/get/${id}`, {method: 'GET', redirect: 'follow'})
+    fetch(`https://exuberant-toga-wasp.cyclic.app/v1/berita/get/${id}`, {method: 'GET', redirect: 'follow'})
         .then(response => response.json())
         .then(result => {
           if (result.success) {
@@ -103,7 +103,7 @@ export default {
       const id = titleId[titleId.length - 1];
 
       // Get the article and set to reference
-      fetch(`http://localhost:3000/v1/berita/get/${id}`, {method: 'GET', redirect: 'follow'})
+      fetch(`https://exuberant-toga-wasp.cyclic.app/v1/berita/get/${id}`, {method: 'GET', redirect: 'follow'})
           .then(response => response.json())
           .then(result => {
             if (result.success) {

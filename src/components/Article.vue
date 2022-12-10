@@ -53,7 +53,7 @@ export default {
     let isLoading = ref(true);
 
     // Get all articles and set to reference
-    fetch("http://localhost:3000/v1/berita/all", {method: 'GET', redirect: 'follow'})
+    fetch("https://exuberant-toga-wasp.cyclic.app/v1/berita/all", {method: 'GET', redirect: 'follow'})
         .then(response => response.json())
         .then(result => {
           if (result.success) {
