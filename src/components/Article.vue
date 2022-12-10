@@ -14,12 +14,14 @@
 
           <!-- Iterate article card with loops (data from rest api) -->
           <ArticleCard
-              v-for="{ image_header_url, title, contents, posted_by, created_at, updated_at } in articles"
+              v-for="{ id, image_header_url, title, contents, created_at, articleType } in articles"
 
+              :id="id"
               :header-img-url="image_header_url"
               :title="title"
               :description="contents"
               :createdEpoch="created_at"
+              :articleType="articleType"
           ></ArticleCard>
         </div>
 
@@ -56,7 +58,7 @@ export default {
         .then(result => {
           if (result.success) {
             isLoading.value = false;
-            articles.value = result.message;
+            articles.value = result.message.map(v => ({...v, articleType: "berita"}));
           }
         })
         .catch(error => console.log('error', error));
