@@ -20,9 +20,13 @@ export default {
     checkButton: function (buttonEl) {
       const isOnTop = document.body.scrollTop + document.documentElement.scrollTop <= 200;
       if (isOnTop) {
-        buttonEl.classList.add("hidden");
+        if (!buttonEl.classList.contains('hidden')) {
+          buttonEl.classList.add('hidden')
+        }
       } else {
-        buttonEl.classList.remove("hidden");
+        if (buttonEl.classList.contains('hidden')) {
+          buttonEl.classList.remove('hidden')
+        }
       }
     },
     scrollToTop: function () {
