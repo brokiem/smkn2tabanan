@@ -10,7 +10,7 @@
     <div class="container mx-auto px-4 md:max-w-screen-lg pt-6">
       <div class="flex justify-center block w-full p-6 bg-white items-center border  rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
         <!-- Card contents -->
-        <img src="@images/logo-smk2.png" class="h-[200px] w-[200px]" alt="Logo SMK"/>
+        <img src="https://cdn-smkn2tabanan.netlify.app/images/logo-smk2.png" class="h-[200px] w-[200px]" alt="Logo SMK"/>
       </div>
 
       <div class="py-2"></div>

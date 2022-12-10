@@ -111,24 +111,24 @@ router.beforeEach((to, from, next) => {
 
     switch (to.name) {
         case "main":
-            promises = preloadImages([new URL('@images/atas-blur-min.webp', import.meta.url).href])
+            promises = preloadImages(['https://cdn-smkn2tabanan.netlify.app/images/atas-blur-min.webp'])
             break;
         case "logo":
-            promises = preloadImages([new URL('@images/logo-smk2.png', import.meta.url).href])
+            promises = preloadImages(['https://cdn-smkn2tabanan.netlify.app/images/logo-smk2.png'])
             break;
         case "struktur-organisasi":
-            promises = preloadImages([new URL('@images/struktur-organisasi.png', import.meta.url).href])
+            promises = preloadImages(['https://cdn-smkn2tabanan.netlify.app/images/struktur-organisasi.png'])
             break;
         case "kompetensi-keahlian":
             promises = preloadImages([
-                new URL('@images/coding-rpl.jpg', import.meta.url).href,
-                new URL('@images/camera-mm.jpg', import.meta.url).href,
-                new URL('@images/food-boga.jpg', import.meta.url).href,
-                new URL('@images/calc-akl.jpg', import.meta.url).href
+                'https://cdn-smkn2tabanan.netlify.app/images/coding-rpl.jpg',
+                'https://cdn-smkn2tabanan.netlify.app/images/camera-mm.jpg',
+                'https://cdn-smkn2tabanan.netlify.app/images/food-boga.jpg',
+                'https://cdn-smkn2tabanan.netlify.app/images/calc-akl.jpg'
             ])
             break;
         case "tata-tertib":
-            promises = preloadImages([new URL('@images/depan-smk.jpg', import.meta.url).href])
+            promises = preloadImages(['https://cdn-smkn2tabanan.netlify.app/images/depan-smk.jpg'])
             break;
     }
 
