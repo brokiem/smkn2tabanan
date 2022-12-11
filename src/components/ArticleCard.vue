@@ -56,7 +56,7 @@ export default {
       month: "long",
       day: "numeric"
     });
-    const articleRoute = `${props.articleType}/${props.title.replace(/\s+/g, "-").toLowerCase()}-${props.id}`;
+    const articleRoute = `${props.articleType}/${encodeURIComponent(props.title.replaceAll(/\s+/g, "-").toLowerCase())}-${props.id}`;
 
     return {
       articleRoute,

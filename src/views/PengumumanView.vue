@@ -10,7 +10,7 @@
 
     <div class="mb-4 pt-16 pb-16 text-center text-gray-900 dark:text-white" style="background-color: #F8F9FC;">
       <!-- Article title -->
-      <h2 class="mb-4 text-3xl">
+      <h2 class="mb-4 text-3xl px-4 md:px-16">
         {{ article.title }}
       </h2>
 
@@ -70,7 +70,7 @@ export default {
           if (result.success) {
             const article = result.message[0];
             // check if title match with article title from REST
-            if (`${article.title.replace(/\s+/g, "-").toLowerCase()}-${id}` === titleId) {
+            if (encodeURIComponent(`${article.title.replaceAll(/\s+/g, "-").toLowerCase()}-${id}`) === encodeURIComponent(titleId)) {
               // continue to next route if article exists
               next(vm => {
                 // vm is the public component instance
