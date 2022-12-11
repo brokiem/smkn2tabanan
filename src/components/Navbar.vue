@@ -57,6 +57,24 @@
             </div>
           </li>
           <li>
+            <div data-dropdown-toggle="artikel-dropdown" class="cursor-pointer select-none block py-2 pl-3 pr-4 bg-gray-100 md:bg-transparent text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+              Artikel
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 inline"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+
+              <!-- Article dropdown -->
+              <div id="artikel-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow border dark:bg-gray-700">
+                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
+                  <li>
+                    <router-link to="/pengumuman" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pengumuman</router-link>
+                  </li>
+                  <li>
+                    <router-link to="/berita" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Berita</router-link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li>
             <router-link to="/kompetensi-keahlian" class="select-none block py-2 pl-3 pr-4 text-gray-700 bg-gray-100 md:bg-transparent rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
               Kompetensi Keahlian
             </router-link>
