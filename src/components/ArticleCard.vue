@@ -15,7 +15,7 @@
     <!-- Card contents -->
     <div class="p-5">
       <!-- Card article title -->
-      <h3 class="mb-4 text-xl font-normal tracking-tight">{{title}}</h3>
+      <h3 class="mb-4 text-xl font-normal tracking-tight">{{title.length > maxTitleLength ? title.substring(0, maxTitleLength) + "..." : title}}</h3>
       <!-- Card article description with limit of 135 chars -->
       <p class="font-light text-gray-500 text-md text-">{{description.length > maxDescriptionLength ? description.substring(0, maxDescriptionLength) + " [...]" : description}}</p>
 
@@ -43,9 +43,13 @@ export default {
     createdEpoch: Number,
     articleType: String
   },
+  data() {
+    return {
+      maxTitleLength: 55,
+      maxDescriptionLength: 135
+    }
+  },
   setup(props) {
-    const maxDescriptionLength = 135;
-
     const date = new Date(props.createdEpoch * 1000);
     const articleDate = date.toLocaleDateString("id-ID", {
       year: "numeric",
@@ -56,7 +60,6 @@ export default {
 
     return {
       articleRoute,
-      maxDescriptionLength,
       articleDate
     }
   }
