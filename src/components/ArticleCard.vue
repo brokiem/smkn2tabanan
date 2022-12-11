@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-col mx-auto md:max-w-3xl text-gray-900 bg-white rounded-md border-2 border-gray-100 shadow hover:shadow-lg transition duration-200">
+  <div class="flex flex-col mx-auto w-full md:max-w-3xl text-gray-900 bg-white rounded-md border-2 border-gray-100 shadow hover:shadow-lg transition duration-200">
     <!-- Card article image -->
     <div class="relative">
-      <img class="rounded-t-md h-[189px] w-full object-cover" src="https://cdn-smkn2tabanan.netlify.app/images/uas1.jpeg" alt="">
+      <img class="rounded-t-md h-[189px] w-full object-cover" :src="headerImgUrl" alt="">
       <!-- Card article date -->
       <span class="absolute top-2 right-2 bg-blue-50 text-blue-900 text-sm font-medium px-1.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">
         <svg class="w-5 h-5 inline top-[-2px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">

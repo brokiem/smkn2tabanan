@@ -8,13 +8,23 @@
         </div>
 
         <div class="space-y-3 lg:grid lg:grid-cols-3 sm:gap-4 lg:gap-3 lg:space-y-0">
-          <CardSkeleton v-if="isLoading"/>
-          <CardSkeleton v-if="isLoading"/>
-          <CardSkeleton v-if="isLoading"/>
+          <CardSkeleton v-if="isNewsLoading || isAnnouncementsLoading"/>
+          <CardSkeleton v-if="isNewsLoading || isAnnouncementsLoading"/>
+          <CardSkeleton v-if="isNewsLoading || isAnnouncementsLoading"/>
 
           <!-- Iterate article card with loops (data from rest api) -->
           <ArticleCard
-              v-for="{ id, image_header_url, title, contents, created_at, articleType } in articles"
+              v-for="{ id, image_header_url, title, contents, created_at, articleType } in announcements"
+
+              :id="id"
+              :header-img-url="image_header_url"
+              :title="title"
+              :description="contents"
+              :createdEpoch="created_at"
+              :articleType="articleType"
+          ></ArticleCard>
+          <ArticleCard
+              v-for="{ id, image_header_url, title, contents, created_at, articleType } in news"
 
               :id="id"
               :header-img-url="image_header_url"
@@ -38,7 +48,6 @@
 
 <script>
 import ArticleCard from "@/components/ArticleCard.vue";
-import {ref} from "vue";
 import CardSkeleton from "@/components/CardSkeleton.vue";
 
 export default {
@@ -47,23 +56,37 @@ export default {
     CardSkeleton,
     ArticleCard
   },
-  setup() {
-    // Articles reference
-    let articles = ref([]);
-    let isLoading = ref(true);
-
-    // Get all articles and set to reference
-    fetch("https://exuberant-toga-wasp.cyclic.app/v1/berita/all", {method: 'GET', redirect: 'follow'})
-        .then(response => response.json())
-        .then(result => {
-          if (result.success) {
-            isLoading.value = false;
-            articles.value = result.message.map(v => ({...v, articleType: "berita"}));
-          }
-        })
-        .catch(error => console.log('error', error));
-
-    return {articles, isLoading};
+  data() {
+    return {
+      news: [],
+      announcements: [],
+      isNewsLoading: true,
+      isAnnouncementsLoading: true
+    }
+  },
+  methods: {
+    fetchArticle(url, result) {
+      fetch(url, {method: 'GET', redirect: 'follow'})
+          .then(response => response.json())
+          .then(result)
+          .catch(error => console.log('error', error));
+    }
+  },
+  created() {
+    // Pengumuman
+    this.fetchArticle("https://exuberant-toga-wasp.cyclic.app/v1/pengumuman/all", result => {
+      if (result.success) {
+        this.isNewsLoading = false;
+        this.announcements = result.message.slice(0, 3).map(v => ({...v, articleType: "pengumuman"}));
+      }
+    })
+    // Berita
+    this.fetchArticle("https://exuberant-toga-wasp.cyclic.app/v1/berita/all", result => {
+      if (result.success) {
+        this.isAnnouncementsLoading = false;
+        this.news = result.message.slice(0, 3).map(v => ({...v, articleType: "berita"}));
+      }
+    })
   }
 }
 </script>
