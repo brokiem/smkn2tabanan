@@ -28,9 +28,10 @@
     </div>
 
     <div class="container mx-auto px-4 md:max-w-screen-lg pt-6">
-      <div class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <div class="block w-full bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
         <!-- Card contents -->
-        <p class="mt-1 text-base font-normal text-gray-700 dark:text-gray-400 text-justify" v-html="article.contents"></p>
+        <img class="rounded-t-md aspect-video w-full object-contain" style="background-color: #F8F9FC;" :src="article.image_header_url" alt="">
+        <p class="p-5 mt-1 text-base font-normal text-gray-900 dark:text-gray-400 text-justify" v-html="article.contents"></p>
       </div>
     </div>
 
@@ -54,7 +55,7 @@ export default {
     return {
       isLoading: true,
       isArticleExists: true,
-      article: {title: null, contents: null}
+      article: {image_header_url: null, title: null, contents: null}
     }
   },
   // before entering the page, fetch the article contents
