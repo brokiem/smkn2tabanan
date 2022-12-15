@@ -7,6 +7,9 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      maxWidth: {
+        'default': '950px',
+      },
       colors: {
         "blue-secondary": "#1D1CE5",
         "light-blue": "#4649FF",

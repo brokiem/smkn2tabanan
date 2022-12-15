@@ -6,7 +6,7 @@
     <!-- Page title -->
     <Header title="Sejarah Sekolah"></Header>
 
-    <div class="container mx-auto px-4 md:max-w-screen-lg pt-6">
+    <div class="container mx-auto px-4 md:max-w-default pt-6">
       <div class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
         <!-- Card contents -->
         <p class="mt-1 text-base font-normal text-gray-700 dark:text-gray-400">

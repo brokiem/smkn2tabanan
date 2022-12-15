@@ -6,7 +6,7 @@
     <!-- Page title -->
     <Header title="Kompetensi Keahlian"></Header>
 
-    <div class="container mx-auto px-4 md:max-w-screen-lg pt-6">
+    <div class="container mx-auto px-4 md:max-w-default pt-6">
       <!-- RPL -->
       <CardWithLeftImage class="mb-4"
           title="Rekayasa Perangkat Lunak"

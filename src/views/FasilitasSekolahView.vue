@@ -6,7 +6,7 @@
     <!-- Page title -->
     <Header title="Fasilitas Sekolah"></Header>
 
-    <div class="container mx-auto px-4 md:max-w-screen-lg pt-6">
+    <div class="container mx-auto px-4 md:max-w-default pt-6">
       <!-- Page card -->
       <CardWithLeftImage class="mb-4"
           title="Bengkel Komputer"

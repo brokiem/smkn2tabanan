@@ -6,7 +6,7 @@
     <!-- Page title -->
     <Header title="Visi &amp; Misi"></Header>
 
-    <div class="container mx-auto px-4 md:max-w-screen-lg pt-6">
+    <div class="container mx-auto px-4 md:max-w-default pt-6">
       <div class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
         <!-- Visi -->
         <h5 class="mb-2 text-2xl font-base tracking-tight text-black dark:text-white">

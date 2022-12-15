@@ -27,7 +27,7 @@
       Berita
     </div>
 
-    <div class="container mx-auto px-4 md:max-w-screen-lg pt-6">
+    <div class="container mx-auto px-4 md:max-w-default pt-6">
       <div class="block w-full bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
         <!-- Card contents -->
         <img class="rounded-t-md aspect-video w-full object-contain" style="background-color: #F8F9FC;" :src="article.image_header_url" alt="">
