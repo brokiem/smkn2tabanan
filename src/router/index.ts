@@ -1,41 +1,10 @@
 import {createRouter, createWebHashHistory} from "vue-router";
 import NProgress from 'nprogress';
+import {lazyLoad, preloadImages} from "@/router/functions";
 
-// Route progress bar
-NProgress.configure({
-    showSpinner: false,
-    template: '<div class="bar" role="bar">'
-});
 NProgress.trickle = function() {
     return NProgress.inc(0.2);
 };
-
-function lazyLoad(view: string): Object {
-    return () => import(`@/views/${view}.vue`);
-}
-
-function preloadImage(url: string): Promise<any> {
-    const img = new Image();
-    img.src = url;
-
-    return new Promise(resolve => {
-        const image = new Image();
-        image.addEventListener('load', () => {
-            resolve(image);
-        });
-        image.src = url;
-    });
-}
-
-function preloadImages(urls: Array<string>): Promise<any>[] {
-    let promises: any[] = [];
-
-    urls.forEach(url => {
-        promises.push(preloadImage(url));
-    });
-
-    return promises;
-}
 
 const routes = [
     {
@@ -92,14 +61,24 @@ const routes = [
         redirect: '/kesiswaan/tatatertib'
     },
     {
-        path: "/berita/:titleId",
+        path: "/artikel/berita/:titleId",
         name: "berita",
         component: lazyLoad('BeritaView')
     },
     {
-        path: "/pengumuman/:titleId",
+        path: "/artikel/pengumuman/:titleId",
         name: "pengumuman",
         component: lazyLoad('PengumumanView')
+    },
+    {
+        path: "/artikel/berita",
+        name: "berita-list",
+        component: lazyLoad('DaftarBeritaView')
+    },
+    {
+        path: "/artikel/pengumuman",
+        name: "pengumuman-list",
+        component: lazyLoad('DaftarPengumumanView')
     },
     {
         path: '/:pathMatch(.*)*',

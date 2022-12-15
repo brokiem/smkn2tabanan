@@ -11,7 +11,8 @@ module.exports = {
         "blue-secondary": "#1D1CE5",
         "light-blue": "#4649FF",
         "light-blue-secondary": "#7978FF",
-        "light-purple": "#C47AFF"
+        "light-purple": "#C47AFF",
+        "gray-softer": "#D8DADF",
       }
     },
   },

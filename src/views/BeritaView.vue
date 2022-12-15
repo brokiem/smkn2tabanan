@@ -61,7 +61,7 @@ export default {
   // before entering the page, fetch the article contents
   beforeRouteEnter(to, from, next) {
     const titleId = to.params.titleId;
-    const id = titleId[titleId.length - 1];
+    const id = titleId.split("-").pop();
 
     // Get article and check if it exists
     fetch(`https://exuberant-toga-wasp.cyclic.app/v1/berita/get/${id}`, {method: 'GET', redirect: 'follow'})
@@ -70,7 +70,7 @@ export default {
           if (result.success) {
             const article = result.message[0];
             // check if title match with article title from REST
-            if (encodeURIComponent(`${article.title.replaceAll(/\s+/g, "-").toLowerCase()}-${id}`) === titleId) {
+            if (encodeURIComponent(`${article.title.replaceAll(/\s+/g, "-").toLowerCase()}-${id}`) === encodeURIComponent(titleId)) {
               // continue to next route if article exists
               next(vm => {
                 // vm is the public component instance

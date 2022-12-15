@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col md:max-w-3xl text-gray-900 bg-white rounded-md border-2 border-gray-100 shadow hover:shadow-lg transition duration-200">
+  <div class="flex flex-col md:max-w-3xl text-gray-900 bg-white rounded-md border border-gray-200 shadow-sm transition duration-200">
     <!-- Card image skeleton -->
     <div class="relative">
       <div class="rounded-t-md flex justify-center items-center w-full h-[189px] object-cover bg-gray-300 rounded dark:bg-gray-700">
@@ -16,7 +16,7 @@
       <div class="h-0 lg:h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[320px] mb-2.5"></div>
       <div class="h-0 lg:h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[240px] mb-2.5"></div>
       <!-- Card button skeleton -->
-      <div class="mt-6 h-8 bg-gray-200 rounded-md dark:bg-gray-700 max-w-[200px]"></div>
+      <div class="mt-6 h-8 bg-gray-200 rounded-md dark:bg-gray-700 w-full"></div>
     </div>
   </div>
 </template>
