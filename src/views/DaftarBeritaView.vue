@@ -10,6 +10,7 @@
         </h2>
       </div>
 
+      <!-- Search input -->
       <form @submit.prevent class="flex items-center mb-4">
         <label for="searchInput" class="sr-only">Cari</label>
         <div class="relative w-full">
@@ -21,8 +22,10 @@
         </button>
       </form>
 
+      <!-- Berita cards -->
       <Article :is-news="true" :news-total="newsTotal" :search-query="searchValue"/>
 
+      <!-- Load more button -->
       <button @click="loadMore" id="loadMoreBtn" type="button" class="transition duration-200 shadow text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 font-medium rounded-lg text-sm w-full px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
         MUAT LEBIH BANYAK
       </button>
