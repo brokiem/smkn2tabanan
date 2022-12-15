@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col md:max-w-3xl text-gray-900 bg-white rounded-md border border-gray-200 shadow-sm transition duration-200">
+  <div class="flex flex-col md:max-w-3xl text-gray-900 bg-white rounded-md border border-gray-300 shadow-sm transition duration-200">
     <!-- Card image skeleton -->
     <div class="relative">
       <div class="rounded-t-md flex justify-center items-center w-full h-[189px] object-cover bg-gray-300 rounded dark:bg-gray-700">

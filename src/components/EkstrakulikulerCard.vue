@@ -1,6 +1,6 @@
 <template>
   <!-- Card contents -->
-  <div class="flex flex-col mx-auto md:max-w-3xl text-gray-900 bg-white rounded-md border-2 border-gray-100 shadow transition duration-200 p-5">
+  <div class="flex flex-col mx-auto md:max-w-3xl text-gray-900 bg-white rounded-md border border-gray-300 shadow transition duration-200 p-5">
     <!-- Card ekstra title -->
     <h3 class="mb-4 text-xl font-normal tracking-tight">{{title}}</h3>
 
