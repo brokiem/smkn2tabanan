@@ -94,7 +94,7 @@
                     <router-link to="/kesiswaan/tatatertib" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Tata Tertib</router-link>
                   </li>
                   <li>
-                    <router-link to="/kesiswaan/ekstrakulikuler" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ekstra Kulikuler</router-link>
+                    <router-link to="/kesiswaan/ekstrakulikuler" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ekstrakulikuler</router-link>
                   </li>
                 </ul>
               </div>
