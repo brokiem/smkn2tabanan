@@ -120,9 +120,9 @@ router.beforeEach((to, from, next) => {
                 'https://cdn-smkn2tabanan.netlify.app/images/calc-akl.jpg'
             ])
             break;
-        case "tata-tertib":
-            promises = preloadImages(['https://cdn-smkn2tabanan.netlify.app/images/depan-smk.jpg'])
-            break;
+        // case "tata-tertib":
+        //     promises = preloadImages(['https://cdn-smkn2tabanan.netlify.app/images/depan-smk.jpg'])
+        //     break;
     }
 
     // Load images first then go to the next route

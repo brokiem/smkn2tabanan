@@ -9,7 +9,7 @@
     <div class="container mx-auto px-4 md:max-w-default pt-6">
       <div class="flex justify-center">
         <div class="block w-full bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-          <img class="rounded-t-md h-[200px] md:h-[400px] w-full object-cover" src="https://cdn-smkn2tabanan.netlify.app/images/depan-smk.jpg" alt="Landing">
+<!--          <img class="rounded-t-md h-[200px] md:h-[400px] w-full object-cover" src="https://cdn-smkn2tabanan.netlify.app/images/depan-smk.jpg" alt="Landing">-->
 
           <div class="p-6">
             <p class="text-base font-normal text-gray-700 dark:text-gray-400">
