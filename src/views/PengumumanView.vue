@@ -44,6 +44,7 @@
 <script>
 import Header from "@/components/Header.vue";
 import NotFound from "@/components/NotFound.vue";
+import {getAnnouncementDetail} from "/public/assets/rest";
 
 export default {
   name: "PengumumanView",
@@ -64,33 +65,30 @@ export default {
     const id = titleId[titleId.length - 1];
 
     // Get article and check if it exists
-    fetch(`https://exuberant-toga-wasp.cyclic.app/v1/pengumuman/get/${id}`, {method: 'GET', redirect: 'follow'})
-        .then(response => response.json())
-        .then(result => {
-          if (result.success) {
-            const article = result.message[0];
-            // check if title match with article title from REST
-            if (encodeURIComponent(`${article.title.replaceAll(/\s+/g, "-").toLowerCase()}-${id}`) === encodeURIComponent(titleId)) {
-              // continue to next route if article exists
-              next(vm => {
-                // vm is the public component instance
-                // set article data
-                vm.article = article;
-                vm.isArticleExists = true;
-                vm.isLoading = false;
-              });
-              return;
-            }
-          }
-
-          // return 404 Not Found if article doesnt exists
-          // by setting isArticleExists to false
+    getAnnouncementDetail(id, result => {
+      if (result.success) {
+        const article = result.message[0];
+        // check if title match with article title from REST
+        if (encodeURIComponent(`${article.title.replaceAll(/\s+/g, "-").toLowerCase()}-${id}`) === encodeURIComponent(titleId)) {
+          // continue to next route if article exists
           next(vm => {
-            vm.isArticleExists = false;
+            // vm is the public component instance
+            // set article data
+            vm.article = article;
+            vm.isArticleExists = true;
             vm.isLoading = false;
           });
-        })
-        .catch(error => console.log('error', error));
+          return;
+        }
+      }
+
+      // return 404 Not Found if article doesnt exists
+      // by setting isArticleExists to false
+      next(vm => {
+        vm.isArticleExists = false;
+        vm.isLoading = false;
+      });
+    })
   },
   created() {
     // listen when url change to update article contents
@@ -104,26 +102,23 @@ export default {
       const id = titleId[titleId.length - 1];
 
       // Get the article and set to reference
-      fetch(`https://exuberant-toga-wasp.cyclic.app/v1/pengumuman//get${id}`, {method: 'GET', redirect: 'follow'})
-          .then(response => response.json())
-          .then(result => {
-            if (result.success) {
-              this.isLoading = false;
-              const article = result.message[0];
+      getAnnouncementDetail(id, result => {
+        if (result.success) {
+          this.isLoading = false;
+          const article = result.message[0];
 
-              // check if title match with article title from REST
-              if (`${article.title.replace(/\s+/g, "-").toLowerCase()}-${id}` === titleId) {
-                this.isArticleExists = true;
-                this.article = article;
-                return;
-              }
-            }
+          // check if title match with article title from REST
+          if (`${article.title.replace(/\s+/g, "-").toLowerCase()}-${id}` === titleId) {
+            this.isArticleExists = true;
+            this.article = article;
+            return;
+          }
+        }
 
-            // if not found, set isArticleExists to false
-            this.isArticleExists = false;
-            this.isLoading = false;
-          })
-          .catch(error => console.log('error', error));
+        // if not found, set isArticleExists to false
+        this.isArticleExists = false;
+        this.isLoading = false;
+      })
     }
   }
 }

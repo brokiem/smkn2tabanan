@@ -39,6 +39,7 @@
 <script>
 import ArticleCard from "@/components/ArticleCard.vue";
 import CardSkeleton from "@/components/CardSkeleton.vue";
+import {fetchAnnouncements, fetchNews} from "/public/assets/rest";
 
 export default {
   name: "News",
@@ -87,14 +88,6 @@ export default {
       announcementsBackup: []
     }
   },
-  methods: {
-    fetchArticle(url, resultCallback) {
-      fetch(url, {method: 'GET', redirect: 'follow'})
-          .then(response => response.json())
-          .then(resultCallback)
-          .catch(error => console.log('error', error));
-    }
-  },
   watch: {
     searchQuery: function (newQuery, oldQuery) {
       if (newQuery !== oldQuery) {
@@ -114,7 +107,7 @@ export default {
   created() {
     // Pengumuman
     if (this.isAnnouncements) {
-      this.fetchArticle("https://exuberant-toga-wasp.cyclic.app/v1/pengumuman/all", result => {
+      fetchAnnouncements(result => {
         if (result.success) {
           this.isAnnouncementsLoading = false;
           this.announcements = result.message.map(v => ({...v, articleType: "pengumuman"}));
@@ -124,7 +117,7 @@ export default {
     }
     // Berita
     if (this.isNews) {
-      this.fetchArticle("https://exuberant-toga-wasp.cyclic.app/v1/berita/all", result => {
+      fetchNews(result => {
         if (result.success) {
           this.isNewsLoading = false;
           this.news = result.message.map(v => ({...v, articleType: "berita"}));
