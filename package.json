@@ -15,7 +15,6 @@
     "@vueup/vue-quill": "^1.0.1",
     "execa": "5.1.1",
     "flowbite": "^1.5.4",
-    "imagekit": "^4.1.2",
     "nprogress": "^0.2.0",
     "quill-blot-formatter": "^1.0.5",
     "quill-image-uploader": "^1.2.3",
