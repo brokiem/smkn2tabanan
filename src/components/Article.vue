@@ -16,7 +16,7 @@
         :description="contents"
         :createdEpoch="created_at"
         :articleType="articleType"
-        :is-draft="is_draft"
+        :is-draft="Boolean(is_draft)"
         :article-route="`/artikel/${articleType}/${encodeURIComponent(title.replaceAll(/\s+/g, '-').toLowerCase())}-${id}`"
         :edit-article-route="`/admin/artikel/${articleType}/edit/${encodeURIComponent(title.replaceAll(/\s+/g, '-').toLowerCase())}-${id}`"
     ></ArticleCard>
@@ -31,7 +31,7 @@
         :description="contents"
         :createdEpoch="created_at"
         :articleType="articleType"
-        :is-draft="is_draft"
+        :is-draft="Boolean(is_draft)"
         :article-route="`/artikel/${articleType}/${encodeURIComponent(title.replaceAll(/\s+/g, '-').toLowerCase())}-${id}`"
         :edit-article-route="`/admin/artikel/${articleType}/edit/${encodeURIComponent(title.replaceAll(/\s+/g, '-').toLowerCase())}-${id}`"
     ></ArticleCard>
@@ -118,17 +118,20 @@ export default {
     if (this.isAnnouncements) {
       fetchAnnouncements(result => {
         if (result.success) {
-          this.isAnnouncementsLoading = false;
-          this.announcements = result.message.map(v => ({...v, articleType: "pengumuman"})).reverse();
-          this.announcementsBackup = this.announcements;
+          const announcements = result.message.map(v => ({...v, articleType: "pengumuman"})).reverse();
 
           if (this.isLoggedIn) {
             fetchDraftedAnnouncements(this.$cookies.get('ltoken'), result => {
               if (result.success) {
-                this.announcements = result.message.map(v => ({...v, articleType: "pengumuman"})).reverse().concat(this.announcements);
-                this.announcementsBackup = this.announcements;
+                this.isAnnouncementsLoading = false;
+                this.announcements = result.message.map(v => ({...v, articleType: "pengumuman"})).reverse().concat(announcements);
+                this.announcementsBackup = announcements;
               }
             })
+          } else {
+            this.isAnnouncementsLoading = false;
+            this.announcements = announcements;
+            this.announcementsBackup = announcements;
           }
         }
       })
@@ -137,17 +140,20 @@ export default {
     if (this.isNews) {
       fetchNews(result => {
         if (result.success) {
-          this.isNewsLoading = false;
-          this.news = result.message.map(v => ({...v, articleType: "berita"})).reverse();
-          this.newsBackup = this.news;
+          const news = result.message.map(v => ({...v, articleType: "berita"})).reverse();
 
           if (this.isLoggedIn) {
             fetchDraftedNews(this.$cookies.get('ltoken'), result => {
               if (result.success) {
-                this.news = result.message.map(v => ({...v, articleType: "berita"})).reverse().concat(this.news);
+                this.isNewsLoading = false;
+                this.news = result.message.map(v => ({...v, articleType: "berita"})).reverse().concat(news);
                 this.newsBackup = this.news;
               }
             })
+          } else {
+            this.isNewsLoading = false;
+            this.news = news;
+            this.newsBackup = news;
           }
         }
       })
