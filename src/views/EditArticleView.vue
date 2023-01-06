@@ -77,9 +77,10 @@
 <script>
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
-import BlotFormatter from 'quill-blot-formatter';
+import ImageResize from "quill-image-resize-module";
+import ImageUploader from "quill-image-uploader";
 import Header from "@/components/Header.vue";
-import {upload} from "/public/assets/imagekit";
+import {upload} from "@/assets/imagekit";
 import Swal from 'sweetalert2';
 import {
   editAnnouncement,
@@ -195,11 +196,37 @@ export default {
     QuillEditor,
   },
   setup() {
-    const modules = {
-      name: 'blotFormatter',
-      module: BlotFormatter,
-      options: { }
-    };
+    const modules = [
+      {
+        name: 'imageResize',
+        module: ImageResize,
+        options: { }
+      },
+      {
+        name: 'imageUploader',
+        module: ImageUploader,
+        options: {
+          upload: file => {
+            return new Promise((resolve, reject) => {
+              const token = $cookies.get('ltoken');
+
+              if (token === null) {
+                reject("Kamu perlu login untuk melakukan aksi ini");
+              }
+
+              fetchKey(token, "imagekit-private", (result) => {
+                if (result.success) {
+                  const apikey = result.message;
+
+                  upload(file, apikey, (res) => {
+                    resolve(res.url);
+                  })
+                }
+              })
+            })
+          }
+        }
+      }];
     const toolbar = [
         ['bold', 'italic', 'underline', 'strike'],
         [{ 'list': 'ordered'}, { 'list': 'bullet' }],

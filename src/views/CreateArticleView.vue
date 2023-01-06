@@ -70,10 +70,10 @@
 <script>
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
-import BlotFormatter from 'quill-blot-formatter';
+import ImageResize from "quill-image-resize-module";
 import ImageUploader from "quill-image-uploader";
 import Header from "@/components/Header.vue";
-import {upload} from "/public/assets/imagekit";
+import {upload} from "@/assets/imagekit";
 import Swal from 'sweetalert2';
 import {
   draftAnnouncement,
@@ -88,8 +88,8 @@ export default {
   setup() {
     const modules = [
         {
-          name: 'blotFormatter',
-          module: BlotFormatter,
+          name: 'imageResize',
+          module: ImageResize,
           options: { }
         },
         {
