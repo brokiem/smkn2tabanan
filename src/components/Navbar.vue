@@ -25,7 +25,7 @@
         <!-- Item list -->
         <ul class="flex flex-col pb-4 md:p-4 mt-3 rounded-md md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
           <li>
-            <router-link to="/" class="select-none block py-2 pl-3 pr-4 bg-gray-100 rounded md:bg-transparent md:hover:text-blue-700 text-gray-700 md:p-0 dark:text-white" aria-current="page">
+            <router-link to="/" class="no-underline select-none block py-2 pl-3 pr-4 bg-gray-100 rounded md:bg-transparent md:hover:text-blue-700 text-gray-700 md:p-0 dark:text-white" aria-current="page">
               Beranda
             </router-link>
           </li>
@@ -38,19 +38,19 @@
               <div id="profile-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow border dark:bg-gray-700">
                 <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
                   <li>
-                    <router-link to="/profil/sejarah" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sejarah Sekolah</router-link>
+                    <router-link to="/profil/sejarah" class="no-underline text-gray-700 block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sejarah Sekolah</router-link>
                   </li>
                   <li>
-                    <router-link to="/profil/visi-misi" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Visi &amp; Misi</router-link>
+                    <router-link to="/profil/visi-misi" class="no-underline text-gray-700 block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Visi &amp; Misi</router-link>
                   </li>
                   <li>
-                    <router-link to="/profil/fasilitas" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Fasilitas Sekolah</router-link>
+                    <router-link to="/profil/fasilitas" class="no-underline text-gray-700 block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Fasilitas Sekolah</router-link>
                   </li>
                   <li>
-                    <router-link to="/profil/logo" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logo Sekolah</router-link>
+                    <router-link to="/profil/logo" class="no-underline text-gray-700 block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logo Sekolah</router-link>
                   </li>
                   <li>
-                    <router-link to="/profil/struktur-organisasi" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Struktur Organisasi</router-link>
+                    <router-link to="/profil/struktur-organisasi" class="no-underline text-gray-700 block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Struktur Organisasi</router-link>
                   </li>
                 </ul>
               </div>
@@ -65,17 +65,17 @@
               <div id="artikel-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow border dark:bg-gray-700">
                 <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
                   <li>
-                    <router-link to="/artikel/pengumuman" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pengumuman</router-link>
+                    <router-link to="/artikel/pengumuman" class="no-underline text-gray-700 block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Pengumuman</router-link>
                   </li>
                   <li>
-                    <router-link to="/artikel/berita" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Berita</router-link>
+                    <router-link to="/artikel/berita" class="no-underline text-gray-700 block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Berita</router-link>
                   </li>
                 </ul>
               </div>
             </div>
           </li>
           <li>
-            <router-link to="/kompetensi-keahlian" class="select-none block py-2 pl-3 pr-4 text-gray-700 bg-gray-100 md:bg-transparent rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+            <router-link to="/kompetensi-keahlian" class="no-underline select-none block py-2 pl-3 pr-4 text-gray-700 bg-gray-100 md:bg-transparent rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
               Kompetensi Keahlian
             </router-link>
           </li>
@@ -88,13 +88,13 @@
               <div id="kesiswaan-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow border dark:bg-gray-700">
                 <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
                   <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Osis</a>
+                    <a href="#" class="no-underline text-gray-700 block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Osis</a>
                   </li>
                   <li>
-                    <router-link to="/kesiswaan/tatatertib" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Tata Tertib</router-link>
+                    <router-link to="/kesiswaan/tatatertib" class="no-underline text-gray-700 block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Tata Tertib</router-link>
                   </li>
                   <li>
-                    <router-link to="/kesiswaan/ekstrakulikuler" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ekstrakulikuler</router-link>
+                    <router-link to="/kesiswaan/ekstrakulikuler" class="no-underline text-gray-700 block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ekstrakulikuler</router-link>
                   </li>
                 </ul>
               </div>

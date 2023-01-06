@@ -23,7 +23,7 @@
       </form>
 
       <!-- Pengumuman cards -->
-      <Article :is-announcements="true" :news-total="newsTotal" :search-query="searchValue"/>
+      <Article :is-announcements="true" :announcements-total="announcementsTotal" :search-query="searchValue"/>
 
       <!-- Load more button -->
       <button @click="loadMore" id="loadMoreBtn" type="button" class="transition duration-200 shadow text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 font-medium rounded-lg text-sm w-full px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
@@ -43,7 +43,7 @@ export default {
   components: {Article},
   data() {
     return {
-      newsTotal: 6,
+      announcementsTotal: 6,
       searchValue: null
     }
   },
@@ -53,7 +53,7 @@ export default {
 
       setTimeout(() => {
         document.getElementById("loadMoreBtn").removeAttribute("disabled");
-        this.newsTotal += 3;
+        this.announcementsTotal += 3;
       }, 100);
     }
   }

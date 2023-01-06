@@ -81,6 +81,21 @@ const routes = [
         component: lazyLoad('DaftarPengumumanView')
     },
     {
+        path: "/admin/artikel/buat",
+        name: "buat-artikel",
+        component: lazyLoad('CreateArticleView')
+    },
+    {
+        path: "/admin/artikel/:articleType/edit/:articleId",
+        name: "edit-artikel",
+        component: lazyLoad('EditArticleView')
+    },
+    {
+        path: "/admin/login",
+        name: "login",
+        component: lazyLoad('LoginView')
+    },
+    {
         path: '/:pathMatch(.*)*',
         name: 'not-found',
         component: lazyLoad('PageNotFoundView')

@@ -8,7 +8,7 @@
     <ArticleCard
         v-if="isAnnouncements"
 
-        v-for="{ id, image_header_url, title, contents, created_at, articleType } in announcements.slice(this.announcementsOffset, this.announcementsTotal)"
+        v-for="{ id, image_header_url, title, contents, is_draft, created_at, articleType } in announcements.slice(this.announcementsOffset, this.announcementsTotal)"
 
         :id="id"
         :header-img-url="image_header_url"
@@ -16,12 +16,14 @@
         :description="contents"
         :createdEpoch="created_at"
         :articleType="articleType"
+        :is-draft="is_draft"
         :article-route="`/artikel/${articleType}/${encodeURIComponent(title.replaceAll(/\s+/g, '-').toLowerCase())}-${id}`"
+        :edit-article-route="`/admin/artikel/${articleType}/edit/${encodeURIComponent(title.replaceAll(/\s+/g, '-').toLowerCase())}-${id}`"
     ></ArticleCard>
     <ArticleCard
         v-if="isNews"
 
-        v-for="{ id, image_header_url, title, contents, created_at, articleType } in news.slice(this.newsOffset, this.newsTotal)"
+        v-for="{ id, image_header_url, title, contents, is_draft, created_at, articleType } in news.slice(this.newsOffset, this.newsTotal)"
 
         :id="id"
         :header-img-url="image_header_url"
@@ -29,7 +31,9 @@
         :description="contents"
         :createdEpoch="created_at"
         :articleType="articleType"
+        :is-draft="is_draft"
         :article-route="`/artikel/${articleType}/${encodeURIComponent(title.replaceAll(/\s+/g, '-').toLowerCase())}-${id}`"
+        :edit-article-route="`/admin/artikel/${articleType}/edit/${encodeURIComponent(title.replaceAll(/\s+/g, '-').toLowerCase())}-${id}`"
     ></ArticleCard>
   </div>
 
@@ -39,7 +43,7 @@
 <script>
 import ArticleCard from "@/components/ArticleCard.vue";
 import CardSkeleton from "@/components/CardSkeleton.vue";
-import {fetchAnnouncements, fetchNews} from "/public/assets/rest";
+import {fetchAnnouncements, fetchDraftedAnnouncements, fetchDraftedNews, fetchNews} from "/src/assets/rest";
 
 export default {
   name: "News",
@@ -77,6 +81,11 @@ export default {
       default: null
     }
   },
+  setup() {
+    const isLoggedIn = $cookies.get('ltoken') !== null
+
+    return {isLoggedIn}
+  },
   data() {
     return {
       news: [],
@@ -110,8 +119,17 @@ export default {
       fetchAnnouncements(result => {
         if (result.success) {
           this.isAnnouncementsLoading = false;
-          this.announcements = result.message.map(v => ({...v, articleType: "pengumuman"}));
+          this.announcements = result.message.map(v => ({...v, articleType: "pengumuman"})).reverse();
           this.announcementsBackup = this.announcements;
+
+          if (this.isLoggedIn) {
+            fetchDraftedAnnouncements(this.$cookies.get('ltoken'), result => {
+              if (result.success) {
+                this.announcements = result.message.map(v => ({...v, articleType: "pengumuman"})).reverse().concat(this.announcements);
+                this.announcementsBackup = this.announcements;
+              }
+            })
+          }
         }
       })
     }
@@ -120,8 +138,17 @@ export default {
       fetchNews(result => {
         if (result.success) {
           this.isNewsLoading = false;
-          this.news = result.message.map(v => ({...v, articleType: "berita"}));
+          this.news = result.message.map(v => ({...v, articleType: "berita"})).reverse();
           this.newsBackup = this.news;
+
+          if (this.isLoggedIn) {
+            fetchDraftedNews(this.$cookies.get('ltoken'), result => {
+              if (result.success) {
+                this.news = result.message.map(v => ({...v, articleType: "berita"})).reverse().concat(this.news);
+                this.newsBackup = this.news;
+              }
+            })
+          }
         }
       })
     }

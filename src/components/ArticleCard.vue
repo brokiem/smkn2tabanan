@@ -11,18 +11,31 @@
         </svg>
         {{ articleDate }}
       </span>
+      <!-- Card draft info -->
+      <span v-if="isDraft" class="absolute top-2 left-2 bg-blue-50 text-blue-900 text-sm font-medium px-1.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">
+        <svg class="w-5 h-5 inline top-[-2px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+        </svg>
+        Draft
+      </span>
     </div>
     <!-- Card contents -->
     <div class="p-4">
       <!-- Card article title -->
       <h3 class="mb-3 text-xl font-normal tracking-tight text-gray-800">{{title.length > maxTitleLength ? title.substring(0, maxTitleLength) + "..." : title}}</h3>
       <!-- Card article description with limit of 135 chars -->
-      <p class="font-thin text-gray-500 text-md">{{description.length > maxDescriptionLength ? description.substring(0, maxDescriptionLength) + "..." : description}}</p>
+      <p class="font-thin text-gray-500 text-md overflow-hidden">{{description.length > maxDescriptionLength ? description.replace(/<[^>]*>/g, '').substring(0, maxDescriptionLength) + "..." : description.replace(/<[^>]*>/g, '')}}</p>
 
       <!-- Card article button -->
-      <router-link :to="articleRoute">
+      <router-link v-if="!isDraft" :to="articleRoute">
         <button type="button" class="text-gray-900 bg-gray-200 hover:bg-gray-300 font-normal rounded-md text-normal w-full px-4 py-1.5 text-center mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:ring-blue-800 transition duration-200">
           Baca Selengkapnya
+        </button>
+      </router-link>
+
+      <router-link v-if="this.$cookies.get('ltoken') !== null" :to="editArticleRoute">
+        <button type="button" class="text-white bg-blue-600 hover:bg-blue-800 font-normal rounded-md text-normal w-full px-4 py-1.5 text-center mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:ring-blue-800 transition duration-200">
+          Edit Artikel
         </button>
       </router-link>
     </div>
@@ -39,7 +52,9 @@ export default {
     description: String,
     createdEpoch: Number,
     articleType: String,
-    articleRoute: String
+    articleRoute: String,
+    editArticleRoute: String,
+    isDraft: Boolean
   },
   data() {
     return {
@@ -48,7 +63,7 @@ export default {
     }
   },
   setup(props) {
-    const date = new Date(props.createdEpoch * 1000);
+    const date = new Date(props.createdEpoch);
     const articleDate = date.toLocaleDateString("id-ID", {
       year: "numeric",
       month: "long",
