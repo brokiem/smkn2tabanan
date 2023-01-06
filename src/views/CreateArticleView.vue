@@ -70,7 +70,7 @@
 <script>
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
-import ImageResize from "quill-image-resize-module";
+import * as ImageResize from "quill-image-resize-module";
 import ImageUploader from "quill-image-uploader";
 import Header from "@/components/Header.vue";
 import {upload} from "@/assets/imagekit";
