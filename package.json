@@ -12,12 +12,10 @@
     "deploy": "node scripts/gh-pages-deploy.js"
   },
   "dependencies": {
-    "@rollup/plugin-inject": "^5.0.3",
     "@vueup/vue-quill": "^1.0.1",
     "execa": "5.1.1",
     "flowbite": "^1.5.4",
     "nprogress": "^0.2.0",
-    "quill-image-resize-module": "^3.0.0",
     "quill-image-uploader": "^1.2.3",
     "sweetalert2": "^11.6.16",
     "vue": "^3.2.45",

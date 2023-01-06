@@ -77,7 +77,6 @@
 <script>
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
-import * as ImageResize from "quill-image-resize-module";
 import ImageUploader from "quill-image-uploader";
 import Header from "@/components/Header.vue";
 import {upload} from "@/assets/imagekit";
@@ -197,11 +196,6 @@ export default {
   },
   setup() {
     const modules = [
-      {
-        name: 'imageResize',
-        module: ImageResize,
-        options: { }
-      },
       {
         name: 'imageUploader',
         module: ImageUploader,
