@@ -125,7 +125,7 @@ export default {
               if (result.success) {
                 this.isAnnouncementsLoading = false;
                 this.announcements = result.message.map(v => ({...v, articleType: "pengumuman"})).reverse().concat(announcements);
-                this.announcementsBackup = announcements;
+                this.announcementsBackup = this.announcements;
               }
             })
           } else {
