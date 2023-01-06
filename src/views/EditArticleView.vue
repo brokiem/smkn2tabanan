@@ -66,7 +66,7 @@
         <div class="absolute top-0 mt-1 w-3 h-3 rounded-full bg-green-500"></div>
       </div>
       <div class="text-gray-500 text-xs font-medium mt-2 text-center">
-        {{articleStatus === "Draft" ? "Drafting" : "Publishing"}} Article...
+        {{articleStatus}} Article...
       </div>
     </div>
   </div>
@@ -224,7 +224,7 @@ export default {
       articleHeaderImg: "",
       editorValue: "",
       articleType: "Pilih tipe artikel",
-      articleStatus: "Draf",
+      articleStatus: "Drafting",
       showLoadingModal: false
     }
   },
@@ -246,15 +246,20 @@ export default {
         confirmButtonText: 'Ya, hapus artikel!'
       }).then((result) => {
         if (result.isConfirmed) {
+          this.showLoadingModal = true;
+          this.articleStatus = "Deleting";
+
           const token = this.$cookies.get('ltoken');
 
           if (token === null) {
+            this.showLoadingModal = false;
             alert("Kamu perlu login untuk melakukan aksi ini");
             return;
           }
 
           if (this.articleType === "announcements") {
             deleteAnnouncement(this.article.id, token, (res) => {
+              this.showLoadingModal = false;
               if (res.status === 200) {
                 Swal.fire('Success!', 'Artikel berhasil dihapus!', 'success').then(() => {
                   this.$router.push({name: 'main'});
@@ -263,10 +268,12 @@ export default {
                 Swal.fire({icon: 'error', title: 'Failed!', text: 'Gagal menghapus artikel'})
               }
             }, () => {
+              this.showLoadingModal = false;
               Swal.fire({icon: 'error', title: 'Failed!', text: 'Gagal menghapus artikel'})
             })
           } else if (this.articleType === "news") {
             deleteNews(this.article.id, token, (res) => {
+              this.showLoadingModal = false;
               if (res.status === 200) {
                 Swal.fire('Success!', 'Artikel berhasil dihapus!', 'success').then(() => {
                   this.$router.push({name: 'main'});
@@ -275,6 +282,7 @@ export default {
                 Swal.fire({icon: 'error', title: 'Failed!', text: 'Gagal menghapus artikel'})
               }
             }, () => {
+              this.showLoadingModal = false;
               Swal.fire({icon: 'error', title: 'Failed!', text: 'Gagal menghapus artikel'})
             })
           }
@@ -283,7 +291,7 @@ export default {
     },
     draftArticle() {
       this.showLoadingModal = true;
-      this.articleStatus = "Draft";
+      this.articleStatus = "Drafting";
 
       const token = this.$cookies.get('ltoken');
 
@@ -351,7 +359,7 @@ export default {
     },
     publishArticle() {
       this.showLoadingModal = true;
-      this.articleStatus = "Publish";
+      this.articleStatus = "Publishing";
 
       const token = this.$cookies.get('ltoken');
 
