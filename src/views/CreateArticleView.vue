@@ -73,7 +73,7 @@ import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import BlotFormatter from 'quill-blot-formatter';
 import ImageUploader from "quill-image-uploader";
 import Header from "@/components/Header.vue";
-import {upload} from "@/assets/imagekit";
+import {upload} from "/public/assets/imagekit";
 import Swal from 'sweetalert2';
 import {
   draftAnnouncement,
