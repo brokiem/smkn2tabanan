@@ -7,6 +7,12 @@
       <div class="max-w-screen-xl mb-8 lg:mb-10">
         <h2 class="mb-4 text-3xl tracking-tight font-medium text-gray-900 dark:text-white">
           Pengumuman
+
+          <button v-if="$cookies.get('ltoken') !== null" @click="this.$router.push({name: 'buat-artikel'});" type="button" class="ml-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-2 py-2 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </button>
         </h2>
       </div>
 
