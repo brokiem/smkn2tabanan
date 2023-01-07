@@ -128,16 +128,8 @@ router.beforeEach((to, from, next) => {
             promises = preloadImages(['https://cdn-smkn2tabanan.netlify.app/images/struktur-organisasi.png'])
             break;
         case "kompetensi-keahlian":
-            promises = preloadImages([
-                'https://cdn-smkn2tabanan.netlify.app/images/coding-rpl.jpg',
-                'https://cdn-smkn2tabanan.netlify.app/images/camera-mm.jpg',
-                'https://cdn-smkn2tabanan.netlify.app/images/food-boga.jpg',
-                'https://cdn-smkn2tabanan.netlify.app/images/calc-akl.jpg'
-            ])
+            promises = preloadImages(['https://cdn-smkn2tabanan.netlify.app/images/coding-rpl.jpg'])
             break;
-        // case "tata-tertib":
-        //     promises = preloadImages(['https://cdn-smkn2tabanan.netlify.app/images/depan-smk.jpg'])
-        //     break;
     }
 
     // Load images first then go to the next route
