@@ -31,7 +31,7 @@
       <div class="block w-full bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
         <!-- Card contents -->
         <img class="rounded-t-md aspect-video w-full object-contain" style="background-color: #F8F9FC;" :src="article.image_header_url" alt="">
-        <p class="ql-editor p-5 mt-1 text-base font-normal text-gray-900 dark:text-gray-400 text-justify" v-html="article.contents"></p>
+        <p class="ql-editor p-5 mt-4 text-base font-normal text-gray-900 dark:text-gray-400 text-justify" v-html="article.contents"></p>
       </div>
     </div>
 
