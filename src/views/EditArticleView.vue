@@ -195,6 +195,7 @@ export default {
     QuillEditor,
   },
   setup() {
+    // Quill.js modules
     const modules = [
       {
         name: 'imageUploader',
@@ -208,10 +209,12 @@ export default {
                 reject("Kamu perlu login untuk melakukan aksi ini");
               }
 
+              // get upload key
               fetchKey(token, "imagekit-private", (result) => {
                 if (result.success) {
                   const apikey = result.message;
 
+                  // upload image to imagekit
                   upload(file, apikey, (res) => {
                     resolve(res.url);
                   })
@@ -221,6 +224,7 @@ export default {
           }
         }
       }];
+    // Quill.js Toolbar
     const toolbar = [
         ['bold', 'italic', 'underline', 'strike'],
         [{ 'list': 'ordered'}, { 'list': 'bullet' }],
@@ -281,6 +285,7 @@ export default {
           if (this.articleType === "announcements") {
             deleteAnnouncement(this.article.id, token, (res) => {
               this.showLoadingModal = false;
+
               if (res.status === 200) {
                 Swal.fire('Success!', 'Artikel berhasil dihapus!', 'success').then(() => {
                   this.$router.push({name: 'main'});
@@ -295,6 +300,7 @@ export default {
           } else if (this.articleType === "news") {
             deleteNews(this.article.id, token, (res) => {
               this.showLoadingModal = false;
+
               if (res.status === 200) {
                 Swal.fire('Success!', 'Artikel berhasil dihapus!', 'success').then(() => {
                   this.$router.push({name: 'main'});
@@ -447,6 +453,7 @@ export default {
       })
     },
     getHeaderImg(callback) {
+      // get file in the file_input element and get the image base64 data
       const file = document.getElementById("file_input").files[0];
       const reader = new FileReader();
 

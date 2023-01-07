@@ -1,4 +1,4 @@
-export function upload(file, privateKey, callback = () => {}) {
+export function upload(file, privateKey, callback = () => {}, onError = () => {}) {
     const headers = new Headers();
     headers.append("Authorization", `Basic ${btoa(privateKey + ":")}`);
 
@@ -17,5 +17,5 @@ export function upload(file, privateKey, callback = () => {}) {
     fetch("https://upload.imagekit.io/api/v1/files/upload", requestOptions)
         .then(response => response.json())
         .then(callback)
-        .catch(error => console.log('error', error));
+        .catch(onError);
 }

@@ -10,6 +10,7 @@
     </label>
     <input @change="updatePreview" class="mb-2 block w-full text-sm text-gray-900 border border-gray-300 rounded-sm cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" accept="image/*">
 
+    <!-- Uploaded image preview -->
     <img v-if="articleHeaderImg !== ''" id="preview-img" src="" class="mb-4 rounded-sm aspect-video w-full object-contain" style="background-color: #d0d1d3;">
 
     <!-- Article title input -->
@@ -50,6 +51,7 @@
 <!--    </div>-->
   </div>
 
+  <!-- Loading modal when submitting article -->
   <div v-if="showLoadingModal" id="loading-modal" class="fade-in fixed top-0 left-0 z-50 w-screen h-screen flex items-center justify-center" style="background: rgba(0, 0, 0, 0.5);">
     <div class="bg-white border py-14 px-20 rounded-lg flex items-center flex-col">
       <div class="loader-dots block relative w-20 h-5 mt-2">
@@ -74,17 +76,12 @@ import ImageUploader from "quill-image-uploader";
 import Header from "@/components/Header.vue";
 import {upload} from "@/assets/imagekit";
 import Swal from 'sweetalert2';
-import {
-  draftAnnouncement,
-  draftNews,
-  publishAnnouncement,
-  publishNews,
-  fetchKey
-} from "@/assets/rest";
+import {draftAnnouncement, draftNews, publishAnnouncement, publishNews, fetchKey} from "@/assets/rest";
 
 export default {
   name: "CreateArticleView",
   setup() {
+    // Quill.js modules
     const modules = [
         {
           name: 'imageUploader',
@@ -112,6 +109,7 @@ export default {
           }
         }
     ];
+    // Quill.js toolbar
     const toolbar = [
         ['bold', 'italic', 'underline', 'strike'],
         [{ 'list': 'ordered'}, { 'list': 'bullet' }],
@@ -153,48 +151,58 @@ export default {
         return;
       }
 
+      // get imagekit private key to upload the image
       fetchKey(token, "imagekit-private", (result) => {
         if (result.success) {
           const apikey = result.message;
           const file = document.getElementById("file_input").files[0];
 
+          // upload the image in the file_input element
           upload(file, apikey, (res) => {
             console.log(res)
             const imageHeaderUrl = res.url;
 
             if (this.articleType === "announcements") {
+              // draft announcement if the article type is announcement
               draftAnnouncement({
                 title: this.articleTitle,
                 image_header_url: imageHeaderUrl,
                 contents: this.editorValue
               }, token, (res) => {
                 this.showLoadingModal = false;
+                // if the draft announcement is successful, show the success alert
                 if (res.status === 200) {
                   Swal.fire('Success!', 'Artikel berhasil didraft!', 'success').then(() => {
                     this.$router.push({name: 'main'});
                   })
                 } else {
+                  // if the draft announcement is failed, show the error alert
                   Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal didraft!'})
                 }
               }, () => {
+                // if the draft announcement is failed, show the error alert
                 this.showLoadingModal = false;
                 Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal didraft!'})
               });
             } else if (this.articleType === "news") {
+              // draft news if the article type is news
               draftNews({
                 title: this.articleTitle,
                 image_header_url: imageHeaderUrl,
                 contents: this.editorValue
               }, token, (res) => {
                 this.showLoadingModal = false;
+                // if the draft news is successful, show the success alert
                 if (res.status === 200) {
                   Swal.fire('Success!', 'Artikel berhasil didraft!', 'success').then(() => {
                     this.$router.push({name: 'main'});
                   })
                 } else {
+                  // if the draft news is failed, show the error alert
                   Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal didraft!'})
                 }
               }, () => {
+                // if the draft news is failed, show the error alert
                 this.showLoadingModal = false;
                 Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal didraft!'})
               });
@@ -202,6 +210,7 @@ export default {
           });
         }
       }, () => {
+        // if the fetch key is failed, show the error alert
         this.showLoadingModal = false;
         Swal.fire({
           icon: 'error',
@@ -221,11 +230,13 @@ export default {
         return;
       }
 
+      // get imagekit private key to upload the image
       fetchKey(token, "imagekit-private", (result) => {
         if (result.success) {
           const apikey = result.message;
           const file = document.getElementById("file_input").files[0];
 
+          // upload the image in the file_input element
           upload(file, apikey, (res) => {
             const imageHeaderUrl = res.url;
 
@@ -272,6 +283,7 @@ export default {
       })
     },
     getHeaderImg(callback) {
+      // get file in the file_input element and get the image base64 data
       const file = document.getElementById("file_input").files[0];
       const reader = new FileReader();
 
@@ -285,6 +297,7 @@ export default {
       this.getHeaderImg((headerImg) => {
         this.articleHeaderImg = headerImg;
         setTimeout(() => {
+          // update the preview
           document.getElementById("preview-img").src = headerImg;
         }, 100);
       })
