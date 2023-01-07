@@ -21,21 +21,27 @@
       </span>
     </div>
     <!-- Card contents -->
-    <div class="p-4">
+    <div class="px-4 pt-3 pb-2">
       <!-- Card article title -->
-      <h3 class="mb-3 text-xl font-normal tracking-tight text-gray-800">{{title.length > maxTitleLength ? title.substring(0, maxTitleLength) + "..." : title}}</h3>
+      <h3 class="mb-3 text-xl font-normal tracking-tight text-gray-800">
+        {{title.length > maxTitleLength ? title.substring(0, maxTitleLength) + "..." : title}}
+      </h3>
       <!-- Card article description with limit of 135 chars -->
-      <p class="font-thin text-gray-500 text-md overflow-hidden">{{description.length > maxDescriptionLength ? description.replace(/<[^>]*>/g, '').substring(0, maxDescriptionLength) + "..." : description.replace(/<[^>]*>/g, '')}}</p>
+      <p class="font-thin text-gray-500 text-md overflow-hidden">
+        {{description.length > maxDescriptionLength ? description.replace(/<[^>]*>/g, '').substring(0, maxDescriptionLength) + "..." : description.replace(/<[^>]*>/g, '')}}
+      </p>
+    </div>
 
-      <!-- Card article button -->
+    <!-- Card article buttons -->
+    <div class="px-4 pb-4 pt-0.5 mt-auto">
       <router-link v-if="!isDraft" :to="articleRoute">
-        <button type="button" class="text-gray-900 bg-gray-200 hover:bg-gray-300 font-normal rounded-md text-normal w-full px-4 py-1.5 text-center mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:ring-blue-800 transition duration-200">
+        <button type="button" class="text-white bg-blue-600 hover:bg-blue-800 font-normal rounded-md text-normal w-full px-4 py-1.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:ring-blue-800 transition duration-200">
           Baca Selengkapnya
         </button>
       </router-link>
 
       <router-link v-if="this.$cookies.get('ltoken') !== null" :to="editArticleRoute">
-        <button type="button" class="text-white bg-blue-600 hover:bg-blue-800 font-normal rounded-md text-normal w-full px-4 py-1.5 text-center mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:ring-blue-800 transition duration-200">
+        <button type="button" class="text-gray-900 bg-gray-200 hover:bg-gray-300 font-normal rounded-md text-normal w-full px-4 py-1.5 text-center mt-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:ring-blue-800 transition duration-200">
           Edit Artikel
         </button>
       </router-link>
