@@ -480,7 +480,7 @@ export default {
   left: 8px;
   animation: loader-dots2 0.6s infinite;
 }
-.loaderdots div:nth-child(3) {
+.loader-dots div:nth-child(3) {
   left: 32px;
   animation: loader-dots2 0.6s infinite;
 }
