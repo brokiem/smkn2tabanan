@@ -29,13 +29,30 @@
 
     <div class="container mx-auto px-4 md:max-w-default pt-6">
       <div class="block w-full bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-        <!-- Card contents -->
-        <img class="rounded-t-md aspect-video w-full object-contain" style="background-color: #F8F9FC;" :src="article.image_header_url" alt="">
+        <!-- Article title -->
+        <img data-modal-target="default" data-modal-toggle="imageModal" class="rounded-t-md aspect-video w-full object-contain hover:opacity-90 hover:cursor-zoom-in transition duration-100" style="background-color: #F8F9FC;" :src="article.image_header_url" alt="">
+        <!-- Article contents -->
         <p class="ql-editor p-5 mt-1 text-base font-normal text-gray-900 dark:text-gray-400 text-justify" v-html="article.contents"></p>
       </div>
     </div>
 
     <div class="pb-10"></div>
+
+    <div id="imageModal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+      <div class="mt-64 relative w-full h-full max-w-xl md:h-auto">
+        <!-- Modal content -->
+        <button data-modal-toggle="imageModal" type="button" class="absolute inline-flex items-center justify-center w-8 h-8 z-50 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
+          <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </button>
+
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <!-- Modal body -->
+          <div class="p-2 space-y-6">
+            <img class="rounded-md" :src="article.image_header_url" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
 
     <Footer></Footer>
   </main>
@@ -46,6 +63,7 @@ import Header from "@/components/Header.vue";
 import NotFound from "@/components/NotFound.vue";
 import {getNewsDetail} from "/src/assets/rest";
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
+import Modal from "flowbite/src/components/modal";
 
 export default {
   name: "BeritaView",
@@ -97,6 +115,10 @@ export default {
       this.loadArticle(titleId);
     })
   },
+  mounted() {
+    // init modal component
+    this.initModal();
+  },
   methods: {
     loadArticle(titleId) {
       const id = titleId.split('-').pop();
@@ -118,6 +140,59 @@ export default {
         // if not found, set isArticleExists to false
         this.isArticleExists = false;
         this.isLoading = false;
+      })
+    },
+    initModal: function () {
+      const selectors = {
+        main: 'data-modal-toggle',
+        placement: 'data-modal-placement',
+        show: 'data-modal-show',
+        backdrop: 'data-modal-backdrop'
+      }
+      const Default = {
+        placement: 'center',
+        backdrop: 'dynamic'
+      }
+
+      const getModalInstance = (id, instances) => {
+        if (instances.some(modalInstance => modalInstance.id === id)) {
+          return instances.find(modalInstance => modalInstance.id === id)
+        }
+        return false
+      }
+
+      let modalInstances = []
+      document.querySelectorAll(`[${selectors.main}]`).forEach(el => {
+        const modalId = el.getAttribute(selectors.main);
+        const modalEl = document.getElementById(modalId);
+        const placement = modalEl.getAttribute(selectors.placement)
+        const backdrop = modalEl.getAttribute(selectors.backdrop)
+
+        if (modalEl) {
+          if (!modalEl.hasAttribute('aria-hidden') && !modalEl.hasAttribute('aria-modal')) {
+            modalEl.setAttribute('aria-hidden', 'true');
+          }
+        }
+
+        let modal = null
+        if (getModalInstance(modalId, modalInstances)) {
+          modal = getModalInstance(modalId, modalInstances)
+          modal = modal.object
+        } else {
+          modal = new Modal(modalEl, {
+            placement: placement ? placement : Default.placement,
+            backdrop: backdrop ? backdrop : Default.backdrop
+          })
+
+          modalInstances.push({
+            id: modalId,
+            object: modal
+          })
+        }
+
+        el.onclick = () => {
+          modal.toggle()
+        }
       })
     }
   }
