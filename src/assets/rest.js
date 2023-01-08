@@ -226,10 +226,19 @@ export function editNews(articleId, data, token, callback, onError = () => {}) {
     headers.append("x-access-token", token);
 
     const urlencoded = new URLSearchParams();
-    urlencoded.append("title", data.title);
-    urlencoded.append("image_header_url", data.image_header_url);
-    urlencoded.append("contents", data.contents);
-    urlencoded.append("is_draft", data.is_draft);
+
+    if (data.title !== undefined) {
+        urlencoded.append("title", data.title);
+    }
+    if (data.image_header_url !== undefined) {
+        urlencoded.append("image_header_url", data.image_header_url);
+    }
+    if (data.contents !== undefined) {
+        urlencoded.append("contents", data.contents);
+    }
+    if (data.is_draft !== undefined) {
+        urlencoded.append("is_draft", data.is_draft);
+    }
 
     const params = {
         method: 'PUT',
@@ -250,10 +259,19 @@ export function editAnnouncement(articleId, data, token, callback, onError = () 
     headers.append("x-access-token", token);
 
     const urlencoded = new URLSearchParams();
-    urlencoded.append("title", data.title);
-    urlencoded.append("image_header_url", data.image_header_url);
-    urlencoded.append("contents", data.contents);
-    urlencoded.append("is_draft", data.is_draft);
+
+    if (data.title !== undefined) {
+        urlencoded.append("title", data.title);
+    }
+    if (data.image_header_url !== undefined) {
+        urlencoded.append("image_header_url", data.image_header_url);
+    }
+    if (data.contents !== undefined) {
+        urlencoded.append("contents", data.contents);
+    }
+    if (data.is_draft !== undefined) {
+        urlencoded.append("is_draft", data.is_draft);
+    }
 
     const params = {
         method: 'PUT',

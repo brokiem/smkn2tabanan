@@ -332,13 +332,15 @@ export default {
           const apikey = result.message;
 
           const draft = (imageHeaderUrl) => {
+            const editedArticle = {is_draft: true};
+
+            // Hanya kirim artikel value yang diedit untuk efisiensi
+            if (this.articleTitle !== this.article.title) editedArticle.title = this.articleTitle;
+            if (imageHeaderUrl !== this.article.image_header_url) editedArticle.image_header_url = imageHeaderUrl;
+            if (this.editorValue !== this.article.contents) editedArticle.contents = this.editorValue;
+
             if (this.articleType === "announcements") {
-              editAnnouncement(this.article.id, {
-                title: this.articleTitle,
-                image_header_url: imageHeaderUrl,
-                contents: this.editorValue,
-                is_draft: true
-              }, token, (res) => {
+              editAnnouncement(this.article.id, editedArticle, token, (res) => {
                 this.showLoadingModal = false;
                 if (res.status === 200) {
                   Swal.fire('Success!', 'Artikel berhasil diedit dan didraft!', 'success')
@@ -350,12 +352,7 @@ export default {
                 Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal didraft!'})
               });
             } else if (this.articleType === "news") {
-              editNews(this.article.id, {
-                title: this.articleTitle,
-                image_header_url: imageHeaderUrl,
-                contents: this.editorValue,
-                is_draft: true
-              }, token, (res) => {
+              editNews(this.article.id, editedArticle, token, (res) => {
                 this.showLoadingModal = false;
                 if (res.status === 200) {
                   Swal.fire('Success!', 'Artikel berhasil diedit dan didraft!', 'success')
@@ -400,13 +397,15 @@ export default {
           const apikey = result.message;
 
           const publish = (imageHeaderUrl) => {
+            const editedArticle = {is_draft: false};
+
+            // Hanya kirim artikel value yang diedit untuk efisiensi
+            if (this.articleTitle !== this.article.title) editedArticle.title = this.articleTitle;
+            if (imageHeaderUrl !== this.article.image_header_url) editedArticle.image_header_url = imageHeaderUrl;
+            if (this.editorValue !== this.article.contents) editedArticle.contents = this.editorValue;
+
             if (this.articleType === "announcements") {
-              editAnnouncement(this.article.id, {
-                title: this.articleTitle,
-                image_header_url: imageHeaderUrl,
-                contents: this.editorValue,
-                is_draft: false
-              }, token, (res) => {
+              editAnnouncement(this.article.id, editedArticle, token, (res) => {
                 this.showLoadingModal = false;
                 if (res.status === 200) {
                   Swal.fire('Success!', 'Artikel berhasil diedit dan dipublikasikan!', 'success')
@@ -418,12 +417,7 @@ export default {
                 Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal dipublikasikan!'})
               });
             } else if (this.articleType === "news") {
-              editNews(this.article.id, {
-                title: this.articleTitle,
-                image_header_url: imageHeaderUrl,
-                contents: this.editorValue,
-                is_draft: false
-              }, token, (res) => {
+              editNews(this.article.id, editedArticle, token, (res) => {
                 this.showLoadingModal = false;
                 if (res.status === 200) {
                   Swal.fire('Success!', 'Artikel berhasil diedit dan dipublikasikan!', 'success')
