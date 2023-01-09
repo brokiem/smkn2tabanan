@@ -37,6 +37,11 @@
     ></ArticleCard>
   </div>
 
+  <div v-if="(isAnnouncements && (announcements.length <= 0)) || (isNews && (news.length <= 0 ))" class="my-20">
+    <p class="text-center text-xl">Artikel tidak ditemukan</p>
+    <p class="text-center text-base">Sepertinya tidak ada yang cocok dengan penelusuran Anda</p>
+  </div>
+
   <div class="pt-5"></div>
 </template>
 
