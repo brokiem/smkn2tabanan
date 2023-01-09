@@ -62,7 +62,7 @@ export default {
       }
 
       const _this = this;
-      login(data, function(res) {
+      login(data).then(function (res) {
         if (res.success) {
           _this.$cookies.set('ltoken', res.message.token, '24h');
           document.getElementById("email").value = "";

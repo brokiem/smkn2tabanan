@@ -102,7 +102,7 @@ export default {
 
     if (articleType === "berita") {
       // Get article and check if it exists
-      getNewsDetail(id, result => {
+      getNewsDetail(id).then(result => {
         if (result.success) {
           const article = result.message[0];
           // check if title match with article title from REST
@@ -118,7 +118,7 @@ export default {
             });
           }
         } else {
-          getDraftedNewsDetail(id, $cookies.get("ltoken"), result => {
+          getDraftedNewsDetail(id, $cookies.get("ltoken")).then(result => {
             if (result.success) {
               const article = result.message[0];
               // check if title match with article title from REST
@@ -146,7 +146,7 @@ export default {
       })
     } else if (articleType === "pengumuman") {
       // Get article and check if it exists
-      getAnnouncementDetail(id, result => {
+      getAnnouncementDetail(id).then(result => {
         if (result.success) {
           const article = result.message[0];
           // check if title match with article title from REST
@@ -162,7 +162,7 @@ export default {
             });
           }
         } else {
-          getDraftedAnnouncementDetail(id, $cookies.get("ltoken"), result => {
+          getDraftedAnnouncementDetail(id, $cookies.get("ltoken")).then(result => {
             if (result.success) {
               const article = result.message[0];
               // check if title match with article title from REST
@@ -210,12 +210,12 @@ export default {
               }
 
               // get upload key
-              fetchKey(token, "imagekit-private", (result) => {
+              fetchKey(token, "imagekit-private").then((result) => {
                 if (result.success) {
                   const apikey = result.message;
 
                   // upload image to imagekit
-                  upload(file, apikey, (res) => {
+                  upload(file, apikey).then((res) => {
                     resolve(res.url);
                   })
                 }
@@ -283,32 +283,32 @@ export default {
           }
 
           if (this.articleType === "announcements") {
-            deleteAnnouncement(this.article.id, token, (res) => {
+            deleteAnnouncement(this.article.id, token).then((res) => {
               this.showLoadingModal = false;
 
-              if (res.status === 200) {
+              if (res.success) {
                 Swal.fire('Success!', 'Artikel berhasil dihapus!', 'success').then(() => {
                   this.$router.push({name: 'main'});
                 })
               } else {
                 Swal.fire({icon: 'error', title: 'Failed!', text: 'Gagal menghapus artikel'})
               }
-            }, () => {
+            }).catch((err) => {
               this.showLoadingModal = false;
               Swal.fire({icon: 'error', title: 'Failed!', text: 'Gagal menghapus artikel'})
             })
           } else if (this.articleType === "news") {
-            deleteNews(this.article.id, token, (res) => {
+            deleteNews(this.article.id, token).then((res) => {
               this.showLoadingModal = false;
 
-              if (res.status === 200) {
+              if (res.success) {
                 Swal.fire('Success!', 'Artikel berhasil dihapus!', 'success').then(() => {
                   this.$router.push({name: 'main'});
                 })
               } else {
                 Swal.fire({icon: 'error', title: 'Failed!', text: 'Gagal menghapus artikel'})
               }
-            }, () => {
+            }).catch((err) => {
               this.showLoadingModal = false;
               Swal.fire({icon: 'error', title: 'Failed!', text: 'Gagal menghapus artikel'})
             })
@@ -327,7 +327,7 @@ export default {
         return;
       }
 
-      fetchKey(token, "imagekit-private", (result) => {
+      fetchKey(token, "imagekit-private").then((result) => {
         if (result.success) {
           const apikey = result.message;
 
@@ -340,26 +340,26 @@ export default {
             if (this.editorValue !== this.article.contents) editedArticle.contents = this.editorValue;
 
             if (this.articleType === "announcements") {
-              editAnnouncement(this.article.id, editedArticle, token, (res) => {
+              editAnnouncement(this.article.id, editedArticle, token).then((res) => {
                 this.showLoadingModal = false;
-                if (res.status === 200) {
+                if (res.success) {
                   Swal.fire('Success!', 'Artikel berhasil diedit dan didraft!', 'success')
                 } else {
                   Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal didraft!'})
                 }
-              }, () => {
+              }).catch(() => {
                 this.showLoadingModal = false;
                 Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal didraft!'})
               });
             } else if (this.articleType === "news") {
-              editNews(this.article.id, editedArticle, token, (res) => {
+              editNews(this.article.id, editedArticle, token).then((res) => {
                 this.showLoadingModal = false;
-                if (res.status === 200) {
+                if (res.success) {
                   Swal.fire('Success!', 'Artikel berhasil diedit dan didraft!', 'success')
                 } else {
                   Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal didraft!'})
                 }
-              }, () => {
+              }).catch(() => {
                 this.showLoadingModal = false;
                 Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal didraft!'})
               });
@@ -368,7 +368,7 @@ export default {
 
           const file = document.getElementById("file_input").files[0];
           if (file !== undefined) {
-            upload(file, apikey, (res) => {
+            upload(file, apikey).then((res) => {
               const imageHeaderUrl = res.url;
               draft(imageHeaderUrl)
             });
@@ -376,7 +376,7 @@ export default {
             draft(this.article.image_header_url);
           }
         }
-      }, () => {
+      }).catch(() => {
         this.showLoadingModal = false;
         Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal didraft!'})
       })
@@ -392,7 +392,7 @@ export default {
         return;
       }
 
-      fetchKey(token, "imagekit-private", (result) => {
+      fetchKey(token, "imagekit-private").then((result) => {
         if (result.success) {
           const apikey = result.message;
 
@@ -405,26 +405,26 @@ export default {
             if (this.editorValue !== this.article.contents) editedArticle.contents = this.editorValue;
 
             if (this.articleType === "announcements") {
-              editAnnouncement(this.article.id, editedArticle, token, (res) => {
+              editAnnouncement(this.article.id, editedArticle, token).then((res) => {
                 this.showLoadingModal = false;
-                if (res.status === 200) {
+                if (res.success) {
                   Swal.fire('Success!', 'Artikel berhasil diedit dan dipublikasikan!', 'success')
                 } else {
                   Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal dipublikasikan!'})
                 }
-              }, () => {
+              }).catch(() => {
                 this.showLoadingModal = false;
                 Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal dipublikasikan!'})
               });
             } else if (this.articleType === "news") {
-              editNews(this.article.id, editedArticle, token, (res) => {
+              editNews(this.article.id, editedArticle, token).then((res) => {
                 this.showLoadingModal = false;
-                if (res.status === 200) {
+                if (res.success) {
                   Swal.fire('Success!', 'Artikel berhasil diedit dan dipublikasikan!', 'success')
                 } else {
                   Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal dipublikasikan!'})
                 }
-              }, () => {
+              }).catch(() => {
                 this.showLoadingModal = false;
                 Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal dipublikasikan!'})
               });
@@ -433,7 +433,7 @@ export default {
 
           const file = document.getElementById("file_input").files[0];
           if (file !== undefined) {
-            upload(file, apikey, (res) => {
+            upload(file, apikey).then((res) => {
               const imageHeaderUrl = res.url;
               publish(imageHeaderUrl)
             });
@@ -441,7 +441,7 @@ export default {
             publish(this.article.image_header_url);
           }
         }
-      }, () => {
+      }).catch(() => {
         this.showLoadingModal = false;
         Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal dipublikasikan!'})
       })

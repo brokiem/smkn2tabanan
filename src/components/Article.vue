@@ -116,12 +116,12 @@ export default {
   created() {
     // Pengumuman
     if (this.isAnnouncements) {
-      fetchAnnouncements(result => {
+      fetchAnnouncements().then((result) => {
         if (result.success) {
           const announcements = result.message.map(v => ({...v, articleType: "pengumuman"})).reverse();
 
           if (this.isLoggedIn) {
-            fetchDraftedAnnouncements(this.$cookies.get('ltoken'), result => {
+            fetchDraftedAnnouncements(this.$cookies.get('ltoken')).then((result) => {
               if (result.success) {
                 this.isAnnouncementsLoading = false;
                 this.announcements = result.message.map(v => ({...v, articleType: "pengumuman"})).reverse().concat(announcements);
@@ -138,12 +138,12 @@ export default {
     }
     // Berita
     if (this.isNews) {
-      fetchNews(result => {
+      fetchNews().then((result) => {
         if (result.success) {
           const news = result.message.map(v => ({...v, articleType: "berita"})).reverse();
 
           if (this.isLoggedIn) {
-            fetchDraftedNews(this.$cookies.get('ltoken'), result => {
+            fetchDraftedNews(this.$cookies.get('ltoken')).then((result) => {
               if (result.success) {
                 this.isNewsLoading = false;
                 this.news = result.message.map(v => ({...v, articleType: "berita"})).reverse().concat(news);

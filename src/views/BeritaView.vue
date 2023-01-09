@@ -66,7 +66,7 @@ export default {
     const id = titleId.split('-').pop();
 
     // Get article and check if it exists
-    getNewsDetail(id, result => {
+    getNewsDetail(id).then((result) => {
       if (result.success) {
         const article = result.message[0];
         // check if title match with article title from REST
@@ -102,7 +102,7 @@ export default {
       const id = titleId.split('-').pop();
 
       // Get the article and set to reference
-      getNewsDetail(id, result => {
+      getNewsDetail(id).then((result) => {
         if (result.success) {
           this.isLoading = false;
           const article = result.message[0];

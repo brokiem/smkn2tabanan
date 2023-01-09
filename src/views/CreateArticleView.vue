@@ -95,11 +95,11 @@ export default {
                   reject("Kamu perlu login untuk melakukan aksi ini");
                 }
 
-                fetchKey(token, "imagekit-private", (result) => {
+                fetchKey(token, "imagekit-private").then((result) => {
                   if (result.success) {
                     const apikey = result.message;
 
-                    upload(file, apikey, (res) => {
+                    upload(file, apikey).then((res) => {
                       resolve(res.url);
                     })
                   }
@@ -152,64 +152,58 @@ export default {
       }
 
       // get imagekit private key to upload the image
-      fetchKey(token, "imagekit-private", (result) => {
+      fetchKey(token, "imagekit-private").then((result) => {
         if (result.success) {
           const apikey = result.message;
           const file = document.getElementById("file_input").files[0];
 
           // upload the image in the file_input element
-          upload(file, apikey, (res) => {
+          upload(file, apikey).then((res) => {
             console.log(res)
             const imageHeaderUrl = res.url;
 
             if (this.articleType === "announcements") {
               // draft announcement if the article type is announcement
-              draftAnnouncement({
-                title: this.articleTitle,
-                image_header_url: imageHeaderUrl,
-                contents: this.editorValue
-              }, token, (res) => {
-                this.showLoadingModal = false;
-                // if the draft announcement is successful, show the success alert
-                if (res.status === 200) {
-                  Swal.fire('Success!', 'Artikel berhasil didraft!', 'success').then(() => {
-                    this.$router.push({name: 'main'});
-                  })
-                } else {
-                  // if the draft announcement is failed, show the error alert
-                  Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal didraft!'})
-                }
-              }, () => {
-                // if the draft announcement is failed, show the error alert
-                this.showLoadingModal = false;
-                Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal didraft!'})
-              });
+              draftAnnouncement({title: this.articleTitle, image_header_url: imageHeaderUrl, contents: this.editorValue}, token)
+                  .then((res) => {
+                    this.showLoadingModal = false;
+                    // if the draft announcement is successful, show the success alert
+                    if (res.success) {
+                      Swal.fire('Success!', 'Artikel berhasil didraft!', 'success').then(() => {
+                        this.$router.push({name: 'main'});
+                      })
+                    } else {
+                      // if the draft announcement is failed, show the error alert
+                      Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal didraft!'})
+                    }
+                  }).catch((err) => {
+                    // if the draft announcement is failed, show the error alert
+                    this.showLoadingModal = false;
+                    Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal didraft!'})
+                  });
             } else if (this.articleType === "news") {
               // draft news if the article type is news
-              draftNews({
-                title: this.articleTitle,
-                image_header_url: imageHeaderUrl,
-                contents: this.editorValue
-              }, token, (res) => {
-                this.showLoadingModal = false;
-                // if the draft news is successful, show the success alert
-                if (res.status === 200) {
-                  Swal.fire('Success!', 'Artikel berhasil didraft!', 'success').then(() => {
-                    this.$router.push({name: 'main'});
-                  })
-                } else {
-                  // if the draft news is failed, show the error alert
-                  Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal didraft!'})
-                }
-              }, () => {
-                // if the draft news is failed, show the error alert
-                this.showLoadingModal = false;
-                Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal didraft!'})
-              });
+              draftNews({title: this.articleTitle, image_header_url: imageHeaderUrl, contents: this.editorValue}, token)
+                  .then((res) => {
+                    this.showLoadingModal = false;
+                    // if the draft news is successful, show the success alert
+                    if (res.success) {
+                      Swal.fire('Success!', 'Artikel berhasil didraft!', 'success').then(() => {
+                        this.$router.push({name: 'main'});
+                      })
+                    } else {
+                      // if the draft news is failed, show the error alert
+                      Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal didraft!'})
+                    }
+                  }).catch((err) => {
+                    // if the draft news is failed, show the error alert
+                    this.showLoadingModal = false;
+                    Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal didraft!'})
+                  });
             }
           });
         }
-      }, () => {
+      }).catch((err) => {
         // if the fetch key is failed, show the error alert
         this.showLoadingModal = false;
         Swal.fire({
@@ -231,53 +225,47 @@ export default {
       }
 
       // get imagekit private key to upload the image
-      fetchKey(token, "imagekit-private", (result) => {
+      fetchKey(token, "imagekit-private").then((result) => {
         if (result.success) {
           const apikey = result.message;
           const file = document.getElementById("file_input").files[0];
 
           // upload the image in the file_input element
-          upload(file, apikey, (res) => {
+          upload(file, apikey).then((res) => {
             const imageHeaderUrl = res.url;
 
             if (this.articleType === "announcements") {
-              publishAnnouncement({
-                title: this.articleTitle,
-                image_header_url: imageHeaderUrl,
-                contents: this.editorValue
-              }, token, (res) => {
-                this.showLoadingModal = false;
-                if (res.status === 200) {
-                  Swal.fire('Success!', 'Artikel berhasil dipublikasikan!', 'success').then(() => {
-                    this.$router.push({name: 'main'});
-                  })
-                } else {
-                  Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal dipublikasikan!'})
-                }
-              }, () => {
-                this.showLoadingModal = false;
-                Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal dipublikasikan!'})
-              });
+              publishAnnouncement({title: this.articleTitle, image_header_url: imageHeaderUrl, contents: this.editorValue}, token)
+                  .then((res) => {
+                    this.showLoadingModal = false;
+                    if (res.success) {
+                      Swal.fire('Success!', 'Artikel berhasil dipublikasikan!', 'success').then(() => {
+                        this.$router.push({name: 'main'});
+                      })
+                    } else {
+                      Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal dipublikasikan!'})
+                    }
+                  }).catch((err) => {
+                    this.showLoadingModal = false;
+                    Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal dipublikasikan!'})
+                  });
             } else if (this.articleType === "news") {
-              publishNews({
-                title: this.articleTitle,
-                image_header_url: imageHeaderUrl,
-                contents: this.editorValue
-              }, token, (res) => {
-                this.showLoadingModal = false;
-                if (res.status === 200) {
-                  Swal.fire('Success!', 'Artikel berhasil dipublikasikan!', 'success')
-                } else {
-                  Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal dipublikasikan!'})
-                }
-              }, () => {
-                this.showLoadingModal = false;
-                Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal dipublikasikan!'})
-              });
+              publishNews({title: this.articleTitle, image_header_url: imageHeaderUrl, contents: this.editorValue}, token)
+                  .then((res) => {
+                    this.showLoadingModal = false;
+                    if (res.success) {
+                      Swal.fire('Success!', 'Artikel berhasil dipublikasikan!', 'success')
+                    } else {
+                      Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal dipublikasikan!'})
+                    }
+                  }).catch((err) => {
+                    this.showLoadingModal = false;
+                    Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal dipublikasikan!'})
+                  });
             }
           });
         }
-      }, () => {
+      }).catch((err) => {
         this.showLoadingModal = false;
         Swal.fire({icon: 'error', title: 'Failed!', text: 'Artikel gagal dipublikasikan!'})
       })
