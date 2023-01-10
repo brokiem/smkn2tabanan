@@ -1,6 +1,6 @@
 <template>
   <!-- Return 404 Not Found if article doesnt exists -->
-  <main v-if="!isArticleExists">
+  <main v-if="!isArticleExists && !isLoading">
     <NotFound/>
   </main>
 
@@ -56,14 +56,22 @@ export default {
   data() {
     return {
       isLoading: true,
-      isArticleExists: true,
-      article: {image_header_url: null, title: null, contents: null}
+      isArticleExists: false,
+      article: {image_header_url: null, title: null, contents: null, created_at: null}
     }
   },
   // before entering the page, fetch the article contents
   beforeRouteEnter(to, from, next) {
     const titleId = to.params.titleId;
     const id = titleId.split('-').pop();
+
+    if (isNaN(parseInt(id))) {
+      next(vm => {
+        vm.isArticleExists = false;
+        vm.isLoading = false;
+      });
+      return;
+    }
 
     // Get article and check if it exists
     getAnnouncementDetail(id).then((result) => {
@@ -93,35 +101,11 @@ export default {
   },
   created() {
     // listen when url change to update article contents
-    this.$watch(() => this.$route.params, (toParams, previousParams) => {
-      const titleId = toParams.titleId;
-      this.loadArticle(titleId);
+    this.$watch(() => this.$route.params, () => {
+      location.reload();
     })
   },
-  methods: {
-    loadArticle(titleId) {
-      const id = titleId.split('-').pop();
-
-      // Get the article and set to reference
-      getAnnouncementDetail(id).then((result) => {
-        if (result.success) {
-          this.isLoading = false;
-          const article = result.message[0];
-
-          // check if title match with article title from REST
-          if (`${article.title.replace(/\s+/g, "-").toLowerCase()}-${id}` === titleId) {
-            this.isArticleExists = true;
-            this.article = article;
-            return;
-          }
-        }
-
-        // if not found, set isArticleExists to false
-        this.isArticleExists = false;
-        this.isLoading = false;
-      })
-    }
-  }
+  methods: {}
 }
 </script>
 
