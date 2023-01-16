@@ -1,6 +1,7 @@
 import {createRouter, createWebHashHistory} from "vue-router";
 import NProgress from 'nprogress';
 import {lazyLoad, preloadImages} from "@/router/functions";
+import MainView from "@/views/MainView.vue";
 
 NProgress.trickle = function() {
     return NProgress.inc(0.2);
@@ -10,7 +11,7 @@ const routes = [
     {
         path: "/",
         name: "main",
-        component: lazyLoad('MainView')
+        component: MainView,
     },
     {
         path: "/profil/fasilitas",
