@@ -31,7 +31,7 @@
       </router-link>
 
       <router-link v-if="this.$cookies.get('ltoken') !== null" :to="editArticleRoute">
-        <BlueButton class="w-full" button-text="Edit Artikel"/>
+        <ColorlessButton class="w-full mt-2" button-text="Edit Artikel"/>
       </router-link>
     </div>
   </div>
@@ -41,10 +41,11 @@
 import CalendarIcon from "@/components/icons/CalendarIcon.vue";
 import BlueButton from "@/components/buttons/BlueButton.vue";
 import ArchiveIcon from "@/components/icons/ArchiveIcon.vue";
+import ColorlessButton from "@/components/buttons/ColorlessButton.vue";
 
 export default {
   name: "ArticleCard",
-  components: {ArchiveIcon, BlueButton, CalendarIcon},
+  components: {ColorlessButton, ArchiveIcon, BlueButton, CalendarIcon},
   props: {
     id: Number,
     headerImgUrl: String,
