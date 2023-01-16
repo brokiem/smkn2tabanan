@@ -1,6 +1,9 @@
 <script>
+import BlueButton from "@/components/buttons/BlueButton.vue";
+
 export default {
   name: "InfoCard",
+  components: {BlueButton},
   mounted() {
     const ping = localStorage.getItem("ping");
     if (ping) {
@@ -27,11 +30,9 @@ export default {
       <div class="my-6"></div>
 
       <a href="https://www.smkn2tabanan.sch.id/ppdb">
-        <button @click="removePing" type="button" class="transition duration-200 text-white bg-blue-700 hover:bg-blue-800 focus:ring-2 focus:ring-blue-300 font-normal rounded-md text-sm px-4 py-2 mr-4 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-          INFO PPDB
-          <span id="ping-bulet" class="absolute inline-flex h-3 w-3 inset-y-[-4px] inset-x-24 rounded-full bg-sky-400"></span>
-          <span id="ping-ping" class="animate-ping absolute inline-flex h-3 w-3 inset-y-[-4px] inset-x-24 rounded-full bg-sky-400"></span>
-        </button>
+        <BlueButton button-text="INFO PPDB" />
+        <span id="ping-bulet" class="absolute inline-flex h-3 w-3 inset-y-[-12px] inset-x-[6.3rem] rounded-full bg-sky-400"></span>
+        <span id="ping-ping" class="animate-ping absolute inline-flex h-3 w-3 inset-y-[-12px] inset-x-[6.3rem] rounded-full bg-sky-400"></span>
       </a>
     </div>
   </div>

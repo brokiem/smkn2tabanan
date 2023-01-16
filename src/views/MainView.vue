@@ -19,9 +19,7 @@
               Pengumuman & Berita
 
               <button v-if="$cookies.get('ltoken') !== null" @click="this.$router.push({name: 'buat-artikel'});" type="button" class="ml-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-2 py-2 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
+                <PlusIcon/>
               </button>
             </h2>
           </div>
@@ -30,14 +28,10 @@
           <Article :is-announcements="true" :is-news="true" />
           <!-- Button -->
           <router-link to="/artikel/pengumuman">
-            <button type="button" class="transition duration-200 w-full md:w-auto shadow text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-              LIHAT PENGUMUMAN LAINNYA
-            </button>
+            <ColorlessButton class="font-medium shadow" button-text="LIHAT PENGUMUMAN LAINNYA" />
           </router-link>
           <router-link to="/artikel/berita">
-            <button type="button" class="transition duration-200 w-full md:w-auto shadow text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-              LIHAT BERITA LAINNYA
-            </button>
+            <ColorlessButton class="font-medium shadow" button-text="LIHAT BERITA LAINNYA" />
           </router-link>
         </div>
       </div>
@@ -52,10 +46,14 @@
 import BackgroundImage from "@/components/BackgroundImage.vue";
 import Kompetensi from "@/components/Kompetensi.vue";
 import Article from "@/components/Article.vue";
+import ColorlessButton from "@/components/buttons/ColorlessButton.vue";
+import PlusIcon from "@/components/icons/PlusIcon.vue";
 
 export default {
   name: "MainView",
   components: {
+    PlusIcon,
+    ColorlessButton,
     BackgroundImage, Kompetensi, Article
   }
 }

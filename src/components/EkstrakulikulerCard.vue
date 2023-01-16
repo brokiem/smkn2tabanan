@@ -9,9 +9,7 @@
 
     <!-- Card ekstra button -->
     <div class="flex flex-wrap mt-auto">
-      <button @click="showModal" type="button" class="mt-3 w-full transition duration-200 shadow-sm text-gray-900 bg-white hover:bg-gray-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200 rounded-md py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-        Guru Pembimbing
-      </button>
+      <ColorlessButton @click="showModal" class="w-full mt-3" button-text="Guru Pembimbing"/>
     </div>
   </div>
 
@@ -26,7 +24,7 @@
             Guru Pembimbing - {{title}}
           </h3>
           <button @click="hideModal" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
-            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            <XMarkIcon/>
             <span class="sr-only">Close modal</span>
           </button>
         </div>
@@ -36,9 +34,7 @@
         </div>
         <!-- Modal footer -->
         <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-          <button @click="hideModal" type="button" class="w-full transition duration-200 shadow-sm text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 font-medium rounded-md text-sm py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-            Tutup
-          </button>
+          <ColorlessButton @click="hideModal" class="w-full font-medium" button-text="Tutup"/>
         </div>
       </div>
     </div>
@@ -46,8 +42,12 @@
 </template>
 
 <script>
+import ColorlessButton from "@/components/buttons/ColorlessButton.vue";
+import XMarkIcon from "@/components/icons/XMarkIcon.vue";
+
 export default {
   name: "EkstrakulikulerCard",
+  components: {XMarkIcon, ColorlessButton},
   props: {
     title: {
       type: String,

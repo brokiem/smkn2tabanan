@@ -4,7 +4,7 @@
       <img src="https://cdn-smkn2tabanan.netlify.app/images/logo-smk2.png" width="50" height="50" alt="Logo SMK"/>
     </div>
     <div class="container flex flex-wrap items-center justify-center mx-auto">
-      <h6 class="text-xl font-bold text-white">SMK NEGERI 2 TABANAN</h6>
+      <h6 class="text-xl font-bold mt-1 text-white">SMK NEGERI 2 TABANAN</h6>
     </div>
   </nav>
 
@@ -16,7 +16,7 @@
       <div class="flex md:order-2">
         <button data-collapse-toggle="navbar-cta" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 md:hover:text-blue-700 dark:text-gray-400 dark:hover:bg-gray-700" aria-controls="navbar-cta" aria-expanded="false">
           <span class="sr-only">Open main menu</span>
-          <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+          <BarIcon/>
         </button>
       </div>
 
@@ -31,8 +31,7 @@
           </li>
           <li>
             <div data-dropdown-toggle="profile-dropdown" class="cursor-pointer select-none block py-2 pl-3 pr-4 bg-gray-100 md:bg-transparent text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-              Profil
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 inline"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+              Profil <ChevronDownIcon/>
 
               <!-- Profile dropdown -->
               <div id="profile-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow border dark:bg-gray-700">
@@ -58,8 +57,7 @@
           </li>
           <li>
             <div data-dropdown-toggle="artikel-dropdown" class="cursor-pointer select-none block py-2 pl-3 pr-4 bg-gray-100 md:bg-transparent text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-              Artikel
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 inline"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+              Artikel <ChevronDownIcon/>
 
               <!-- Article dropdown -->
               <div id="artikel-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow border dark:bg-gray-700">
@@ -84,8 +82,7 @@
           </li>
           <li>
             <div data-dropdown-toggle="kesiswaan-dropdown" class="cursor-pointer select-none block py-2 pl-3 pr-4 bg-gray-100 md:bg-transparent text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-              Kesiswaan
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 inline"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" /></svg>
+              Kesiswaan <ChevronDownIcon/>
 
               <!-- Kesiswaan dropdown -->
               <div id="kesiswaan-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow border dark:bg-gray-700">
@@ -112,9 +109,12 @@
 <script>
 import Dropdown from "flowbite/src/components/dropdown";
 import Collapse from "flowbite/src/components/collapse";
+import BarIcon from "@/components/icons/BarIcon.vue";
+import ChevronDownIcon from "@/components/icons/ChevronDownIcon.vue";
 
 export default {
   name: "Navbar",
+  components: {ChevronDownIcon, BarIcon},
   mounted() {
     // init flowbite js listener
     // dropdown

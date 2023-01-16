@@ -10,21 +10,10 @@
 
     <div class="mb-4 pt-16 pb-16 text-center text-gray-900 dark:text-white" style="background-color: #F8F9FC;">
       <!-- Article title -->
-      <h2 class="mb-4 text-3xl px-4 md:px-16">
-        {{ article.title }}
-      </h2>
+      <ArticleTitle :title="article.title"/>
 
       <!-- Article date posted -->
-      <svg class="w-5 h-5 inline top-[-2px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-        <path d="M5.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H6a.75.75 0 01-.75-.75V12zM6 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H6zM7.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H8a.75.75 0 01-.75-.75V12zM8 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H8zM9.25 10a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H10a.75.75 0 01-.75-.75V10zM10 11.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V12a.75.75 0 00-.75-.75H10zM9.25 14a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H10a.75.75 0 01-.75-.75V14zM12 9.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V10a.75.75 0 00-.75-.75H12zM11.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H12a.75.75 0 01-.75-.75V12zM12 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H12zM13.25 10a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H14a.75.75 0 01-.75-.75V10zM14 11.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V12a.75.75 0 00-.75-.75H14z" />
-        <path fill-rule="evenodd" d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z" clip-rule="evenodd" />
-      </svg>
-      {{ new Date(article.created_at).toLocaleDateString("id-ID", {year: "numeric", month: "long", day: "numeric"}) }}
-      &#8212;
-      <svg class="w-5 h-5 inline top-[-2px]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 110-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 01-1.44-4.282m3.102.069a18.03 18.03 0 01-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 018.835 2.535M10.34 6.66a23.847 23.847 0 008.835-2.535m0 0A23.74 23.74 0 0018.795 3m.38 1.125a23.91 23.91 0 011.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 001.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 010 3.46" />
-      </svg>
-      Pengumuman
+      <CalendarIcon/> {{ articleCreatedDate }} &#8212; <MegaphoneIcon/> Pengumuman
     </div>
 
     <div class="container mx-auto px-4 md:max-w-default pt-6">
@@ -46,10 +35,16 @@ import Header from "@/components/Header.vue";
 import NotFound from "@/components/NotFound.vue";
 import {getAnnouncementDetail} from "/src/assets/rest";
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
+import ArticleTitle from "@/components/ArticleTitle.vue";
+import CalendarIcon from "@/components/icons/CalendarIcon.vue";
+import MegaphoneIcon from "@/components/icons/MegaphoneIcon.vue";
 
 export default {
   name: "PengumumanView",
   components: {
+    MegaphoneIcon,
+    CalendarIcon,
+    ArticleTitle,
     NotFound,
     Header
   },
@@ -57,7 +52,8 @@ export default {
     return {
       isLoading: true,
       isArticleExists: false,
-      article: {image_header_url: null, title: null, contents: null, created_at: null}
+      article: {image_header_url: null, title: null, contents: null, created_at: null},
+      articleCreatedDate: null
     }
   },
   // before entering the page, fetch the article contents
@@ -84,6 +80,7 @@ export default {
             // vm is the public component instance
             // set article data
             vm.article = article;
+            vm.articleCreatedDate = new Date(article.created_at).toLocaleDateString("id-ID", {year: "numeric", month: "long", day: "numeric"});
             vm.isArticleExists = true;
             vm.isLoading = false;
           });

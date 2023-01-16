@@ -11,7 +11,7 @@
     <input @change="updatePreview" class="mb-2 block w-full text-sm text-gray-900 border border-gray-300 rounded-sm cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" accept="image/*">
 
     <!-- Uploaded image preview -->
-    <img v-if="articleHeaderImg !== ''" id="preview-img" src="" class="mb-4 rounded-sm aspect-video w-full object-contain" style="background-color: #d0d1d3;">
+    <img v-if="articleHeaderImg !== ''" id="preview-img" src="" class="mb-4 rounded-sm aspect-video w-full object-contain" style="background-color: #d0d1d3;" alt="Preview Image">
 
     <!-- Article title input -->
     <label for="article-title" class="mb-2 text-sm text-gray-900">

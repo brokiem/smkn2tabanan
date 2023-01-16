@@ -23,12 +23,7 @@
             <div class="pt-3"></div>
 
             <a href="https://drive.google.com/file/d/1stDf4czNttoryUewpwreQOsUQ2Y1CbrL/view?usp=sharing">
-              <button type="button" class="transition duration-200 shadow text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1 top-[-1px] inline w-5 h-5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                </svg>
-                Unduh Dokumen
-              </button>
+              <ColorlessButton class="shadow font-base" :button-icon-component="ArrowDownTrayIcon()" button-text="Unduh Dokumen"/>
             </a>
           </div>
         </div>
@@ -44,8 +39,15 @@
 
 <script>
 import Header from "@/components/Header.vue";
+import ArrowDownTrayIcon from "@/components/icons/ArrowDownTrayIcon.vue";
+import ColorlessButton from "@/components/buttons/ColorlessButton.vue";
 export default {
   name: "TataTertibView",
-  components: {Header}
+  methods: {
+    ArrowDownTrayIcon() {
+      return ArrowDownTrayIcon
+    }
+  },
+  components: {ColorlessButton, ArrowDownTrayIcon, Header}
 }
 </script>
