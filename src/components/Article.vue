@@ -123,47 +123,47 @@ export default {
   created() {
     // Pengumuman
     if (this.isAnnouncements) {
-      fetchAnnouncements().then((result) => {
-        if (result.success) {
-          const announcements = result.message.map(v => ({...v, articleType: "pengumuman"})).reverse();
-
-          if (this.isLoggedIn) {
-            fetchDraftedAnnouncements(this.$cookies.get('ltoken')).then((result) => {
-              if (result.success) {
-                this.isAnnouncementsLoading = false;
-                this.announcements = result.message.map(v => ({...v, articleType: "pengumuman"})).reverse().concat(announcements);
-                this.announcementsBackup = this.announcements;
-              }
-            })
-          } else {
-            this.isAnnouncementsLoading = false;
-            this.announcements = announcements;
-            this.announcementsBackup = announcements;
-          }
-        }
-      })
+      if (this.isLoggedIn) {
+        Promise.all([fetchAnnouncements(), fetchDraftedAnnouncements(this.$cookies.get('ltoken'))]).then(([announcements, draftedAnnouncements]) => {
+          this.announcements = draftedAnnouncements.message.map(v => ({...v, articleType: "pengumuman"})).reverse().concat(announcements.message.map(v => ({...v, articleType: "pengumuman"})).reverse());
+          this.announcementsBackup = this.announcements;
+          this.isAnnouncementsLoading = false;
+        }).catch(err => {
+          console.log(err);
+          this.isAnnouncementsLoading = false;
+        });
+      } else {
+        fetchAnnouncements().then(announcements => {
+          this.announcements = announcements.message.map(v => ({...v, articleType: "pengumuman"})).reverse();
+          this.announcementsBackup = this.announcements;
+          this.isAnnouncementsLoading = false;
+        }).catch(err => {
+          console.log(err);
+          this.isAnnouncementsLoading = false;
+        });
+      }
     }
     // Berita
     if (this.isNews) {
-      fetchNews().then((result) => {
-        if (result.success) {
-          const news = result.message.map(v => ({...v, articleType: "berita"})).reverse();
-
-          if (this.isLoggedIn) {
-            fetchDraftedNews(this.$cookies.get('ltoken')).then((result) => {
-              if (result.success) {
-                this.isNewsLoading = false;
-                this.news = result.message.map(v => ({...v, articleType: "berita"})).reverse().concat(news);
-                this.newsBackup = this.news;
-              }
-            })
-          } else {
-            this.isNewsLoading = false;
-            this.news = news;
-            this.newsBackup = news;
-          }
-        }
-      })
+      if (this.isLoggedIn) {
+        Promise.all([fetchNews(), fetchDraftedNews(this.$cookies.get('ltoken'))]).then(([news, draftedNews]) => {
+          this.news = draftedNews.message.map(v => ({...v, articleType: "berita"})).reverse().concat(news.message.map(v => ({...v, articleType: "berita"})).reverse());
+          this.newsBackup = this.news;
+          this.isNewsLoading = false;
+        }).catch(err => {
+          console.log(err);
+          this.isNewsLoading = false;
+        });
+      } else {
+        fetchNews().then(news => {
+          this.news = news.message.map(v => ({...v, articleType: "berita"})).reverse();
+          this.newsBackup = this.news;
+          this.isNewsLoading = false;
+        }).catch(err => {
+          console.log(err);
+          this.isNewsLoading = false;
+        });
+      }
     }
   }
 }
