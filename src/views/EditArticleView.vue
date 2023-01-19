@@ -102,25 +102,12 @@ export default {
 
     if (articleType === "berita") {
       // Get article and check if it exists
-      getNewsDetail(id).then(result => {
-        if (result.success) {
-          const article = result.message[0];
-          // check if title match with article title from REST
-          if (encodeURIComponent(`${article.title.replaceAll(/\s+/g, "-").toLowerCase()}-${id}`) === encodeURIComponent(titleId)) {
-            // continue to next route if article exists
-            next(vm => {
-              // vm is the public component instance
-              // set article data
-              vm.article = article;
-              vm.articleType = "news";
-              vm.isArticleExists = true;
-              vm.isLoading = false;
-            });
-          }
-        } else {
-          getDraftedNewsDetail(id, $cookies.get("ltoken")).then(result => {
-            if (result.success) {
-              const article = result.message[0];
+      Promise.all([getNewsDetail(id), getDraftedNewsDetail(id, $cookies.get("ltoken"))])
+          .then((response) => {
+            const result = response.filter(res => res.success === true);
+
+            if (result.length >= 1) {
+              const article = result[0].message[0];
               // check if title match with article title from REST
               if (encodeURIComponent(`${article.title.replaceAll(/\s+/g, "-").toLowerCase()}-${id}`) === encodeURIComponent(titleId)) {
                 // continue to next route if article exists
@@ -132,39 +119,22 @@ export default {
                   vm.isArticleExists = true;
                   vm.isLoading = false;
                 });
-                return;
               }
+            } else {
+              next({name: "not-found"});
             }
-
-            // return 404 Not Found if article doesnt exists by setting isArticleExists to false
-            next(vm => {
-              vm.isArticleExists = false;
-              vm.isLoading = false;
-            });
+          })
+          .catch(() => {
+            next({name: "not-found"});
           });
-        }
-      })
     } else if (articleType === "pengumuman") {
       // Get article and check if it exists
-      getAnnouncementDetail(id).then(result => {
-        if (result.success) {
-          const article = result.message[0];
-          // check if title match with article title from REST
-          if (encodeURIComponent(`${article.title.replaceAll(/\s+/g, "-").toLowerCase()}-${id}`) === encodeURIComponent(titleId)) {
-            // continue to next route if article exists
-            next(vm => {
-              // vm is the public component instance
-              // set article data
-              vm.article = article;
-              vm.articleType = "announcements";
-              vm.isArticleExists = true;
-              vm.isLoading = false;
-            });
-          }
-        } else {
-          getDraftedAnnouncementDetail(id, $cookies.get("ltoken")).then(result => {
-            if (result.success) {
-              const article = result.message[0];
+      Promise.all([getAnnouncementDetail(id), getDraftedAnnouncementDetail(id, $cookies.get("ltoken"))])
+          .then((response) => {
+            const result = response.filter(res => res.success === true);
+
+            if (result.length >= 1) {
+              const article = result[0].message[0];
               // check if title match with article title from REST
               if (encodeURIComponent(`${article.title.replaceAll(/\s+/g, "-").toLowerCase()}-${id}`) === encodeURIComponent(titleId)) {
                 // continue to next route if article exists
@@ -176,18 +146,14 @@ export default {
                   vm.isArticleExists = true;
                   vm.isLoading = false;
                 });
-                return;
               }
+            } else {
+              next({name: "not-found"});
             }
-
-            // return 404 Not Found if article doesnt exists by setting isArticleExists to false
-            next(vm => {
-              vm.isArticleExists = false;
-              vm.isLoading = false;
-            });
+          })
+          .catch(() => {
+            next({name: "not-found"});
           });
-        }
-      })
     }
   },
   components: {
