@@ -147,7 +147,26 @@ export default {
       const token = this.$cookies.get('ltoken');
 
       if (token === null) {
+        this.showLoadingModal = false;
         alert("Kamu perlu login untuk melakukan aksi ini");
+        return;
+      }
+
+      if (this.articleHeaderImg === "") {
+        this.showLoadingModal = false;
+        Swal.fire({icon: 'error', title: 'Failed!', text: 'Gambar header tidak boleh kosong!'})
+        return;
+      }
+
+      if (this.articleTitle === "") {
+        this.showLoadingModal = false;
+        Swal.fire({icon: 'error', title: 'Failed!', text: 'Judul artikel tidak boleh kosong!'})
+        return;
+      }
+
+      if (this.articleType === "Pilih tipe artikel") {
+        this.showLoadingModal = false;
+        Swal.fire({icon: 'error', title: 'Failed!', text: 'Pilih tipe artikel terlebih dahulu!'})
         return;
       }
 
@@ -220,7 +239,26 @@ export default {
       const token = this.$cookies.get('ltoken');
 
       if (token === null) {
+        this.showLoadingModal = false;
         alert("Kamu perlu login untuk melakukan aksi ini");
+        return;
+      }
+
+      if (this.articleHeaderImg === "") {
+        this.showLoadingModal = false;
+        Swal.fire({icon: 'error', title: 'Failed!', text: 'Gambar header tidak boleh kosong!'})
+        return;
+      }
+
+      if (this.articleTitle === "") {
+        this.showLoadingModal = false;
+        Swal.fire({icon: 'error', title: 'Failed!', text: 'Judul artikel tidak boleh kosong!'})
+        return;
+      }
+
+      if (this.articleType === "Pilih tipe artikel") {
+        this.showLoadingModal = false;
+        Swal.fire({icon: 'error', title: 'Failed!', text: 'Pilih tipe artikel terlebih dahulu!'})
         return;
       }
 
