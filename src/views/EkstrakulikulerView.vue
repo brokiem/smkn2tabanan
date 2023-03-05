@@ -28,7 +28,7 @@
 <script>
 import EkstrakulikulerCard from "@/components/EkstrakulikulerCard.vue";
 import Header from "@/components/Header.vue";
-import jsonObject from "/public/assets/ekstrakulikuler.json";
+import jsonObject from "@/assets/ekstrakulikuler.json";
 
 export default {
   name: "EkstrakulikulerView",
