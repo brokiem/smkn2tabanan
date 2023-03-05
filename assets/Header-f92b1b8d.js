@@ -1,0 +1,1 @@
+import{_ as e,o as r,c as o,t as s}from"./index-9268eda1.js";const a={name:"Header",props:{title:{type:String,required:!0}}},c={class:"mb-4 text-3xl text-center text-gray-900 dark:text-white pt-16 pb-16",style:{"background-color":"#F8F9FC"}};function n(i,p,t,_,l,d){return r(),o("h2",c,s(t.title),1)}const m=e(a,[["render",n]]);export{m as H};

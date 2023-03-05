@@ -1,0 +1,1 @@
+import{_ as e,o as r,c as s,t as c}from"./index-9268eda1.js";const o={name:"ArticleTitle",props:{title:{type:String,required:!0}}},i={class:"mb-4 text-3xl px-4 md:px-16"};function n(a,l,t,p,_,m){return r(),s("h2",i,c(t.title),1)}const d=e(o,[["render",n]]);export{d as A};
